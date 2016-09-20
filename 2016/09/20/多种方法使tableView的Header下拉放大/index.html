@@ -84,36 +84,16 @@
 
 
 
-<meta name="description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
+<meta name="description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到123456789101112131415CGAffineTransformMakeScale```这一方法。# 效果图![下拉放大.gif](http://upload-images.jianshu.io/upload_images/1421047-f9cf98990">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多种方法使tableView的Header下拉放大">
 <meta property="og:url" content="http://yoursite.com/2016/09/20/多种方法使tableView的Header下拉放大/index.html">
 <meta property="og:site_name" content="Sunshine">
-<meta property="og:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-09-20T14:37:48.000Z">
+<meta property="og:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到123456789101112131415CGAffineTransformMakeScale```这一方法。# 效果图![下拉放大.gif](http://upload-images.jianshu.io/upload_images/1421047-f9cf98990">
+<meta property="og:updated_time" content="2016-09-20T14:43:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多种方法使tableView的Header下拉放大">
-<meta name="twitter:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到123456789101112131415CGAffineTransformMakeScale```这一方法。# 效果图![下拉放大.gif](http://upload-images.jianshu.io/upload_images/1421047-f9cf98990">
 
 
 
@@ -286,14 +266,7 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学的这篇文章<a href="http://www.jianshu.com/p/859e3ef76b05" target="_blank" rel="external">【一行代码快速集成tableView头部缩放视图】</a>之后 。想着自己用其他的方法来实现这一效果，于是乎想到</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CGAffineTransformMakeScale</div></pre></td></tr></table></figure>
-<p>这一方法。</p>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip" alt="下拉放大.gif"></p>
-<h1 id="开始实现"><a href="#开始实现" class="headerlink" title="开始实现"></a>开始实现</h1><p>在自己写的过程中发现了一些问题, 直接把</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.tableView.tableHeaderView = self.imageView</div></pre></td></tr></table></figure>
-<p>之后并不能达到想要的效果。整张图片frame都随着tableview的拖动而改变。并不是像是固定在那里。tableview的顶部会出现大部分空白。然后我仔细看了一遍源码。发现做法是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.tableView insertSubview:imageView atIndex:0];</div></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学的这篇文章<a href="http://www.jianshu.com/p/859e3ef76b05" target="_blank" rel="external">【一行代码快速集成tableView头部缩放视图】</a>之后 。想着自己用其他的方法来实现这一效果，于是乎想到<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">CGAffineTransformMakeScale</div><div class="line">```这一方法。</div><div class="line"></div><div class="line"><span class="comment"># 效果图</span></div><div class="line"></div><div class="line">![下拉放大.gif](http://upload-images.jianshu.io/upload_images/1421047<span class="_">-f</span>9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip)</div><div class="line"></div><div class="line"><span class="comment"># 开始实现</span></div><div class="line"></div><div class="line">在自己写的过程中发现了一些问题, 直接把``` bash   </div><div class="line">self.tableView.tableHeaderView = self.imageView</div><div class="line">```之后并不能达到想要的效果。整张图片frame都随着tableview的拖动而改变。并不是像是固定在那里。tableview的顶部会出现大部分空白。然后我仔细看了一遍源码。发现做法是</div><div class="line"></div><div class="line">``` bash</div><div class="line">[self.tableView insertSubview:imageView atIndex:0];</div></pre></td></tr></table></figure></p>
 <p>接着把一个透明view填充到tableview的header view中。   </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 200)];    </div><div class="line">headerView.backgroundColor = [UIColor clearColor];    </div><div class="line">self.tableView.tableHeaderView = headerView;</div></pre></td></tr></table></figure>
 <p>找到这一技巧之后。自己写了一个稍微简单的demo。</p>
@@ -440,7 +413,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始实现"><span class="nav-number">3.</span> <span class="nav-text">开始实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#另一种方法"><span class="nav-number">4.</span> <span class="nav-text">另一种方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#另一种方法"><span class="nav-number">2.</span> <span class="nav-text">另一种方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
         </section>
