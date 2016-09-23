@@ -343,13 +343,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private  func quickActionWithShortcutItem(shortcutItem: UIApplicationShortcutItem)&#123;</div><div class="line">      let nav = self.window?.rootViewController as? UINavigationController</div><div class="line">      if shortcutItem.localizedTitle == &quot;弹一弹&quot;&#123;</div><div class="line">          </div><div class="line">      &#125;else if shortcutItem.localizedTitle == &quot;摇一摇&quot;&#123;</div><div class="line">          </div><div class="line">          let detailVC = UIStoryboard.init(name: &quot;Main&quot;, bundle: nil).instantiateViewController(withIdentifier: &quot;detail&quot;) as! DetailViewController</div><div class="line">          nav!.pushViewController(detailVC, animated: true)</div><div class="line">          </div><div class="line">      &#125;else&#123;</div><div class="line">          </div><div class="line">          nav!.pushViewController(ThirdViewController(), animated: true)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>到这里完全设置好了桌面图标的3D - Touch。 由于最近系统升级到了iOS10 桌面icon的3D - Touch 新增了widget。接下来就来时适配iOS10。</p>
 <h1 id="Extention"><a href="#Extention" class="headerlink" title="Extention"></a>Extention</h1><p>(更多信息移步到<a href="https://onevcat.com/2014/08/notification-today-widget/" target="_blank" rel="external">这里</a>)(喵神博客)</p>
-<p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，下面一律叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
+<p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
 <p><img src="/Users/lixun/Downloads/QQ20160923-0@2x.png" alt="照片"></p>
 <p>工程中会多出这些文件</p>
 <p><img src="/Users/lixun/Downloads/QQ20160923-1@2x.png" alt="照片1"></p>
-<p>在MainInterface.storyboard中</p>
+<p>在MainInterface.storyboard中我们可以定制UI。</p>
 <p><img src="/Users/lixun/Downloads/QQ20160923-3@2x.png" alt="storyboard"></p>
-<p>我们可以定制UI。</p>
 <p>当我们想纯代码构建UI时,在上图显示的Info.plist中NSExtension需要将NSExtensionMainStoryboard删掉,解除与storyboard的关联</p>
 <p>例子中用的storyboard构建UI。 当我们需要与APP通信时。需要用到 URL Shchemes。</p>
 <h2 id="首先给label添加手势"><a href="#首先给label添加手势" class="headerlink" title="首先给label添加手势"></a>首先给label添加手势</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">widgetLabel.addGestureRecognizer(UITapGestureRecognizer.init(target: self</div><div class="line">            , action: #selector(TodayViewController.widgetLabelAction)))</div></pre></td></tr></table></figure>
