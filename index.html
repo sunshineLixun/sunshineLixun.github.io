@@ -345,10 +345,13 @@
 <h1 id="Extention"><a href="#Extention" class="headerlink" title="Extention"></a>Extention</h1><p>(更多信息移步到<a href="https://onevcat.com/2014/08/notification-today-widget/" target="_blank" rel="external">这里</a>)(喵神博客)</p>
 <p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，下面一律叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
 <p><img src="/Users/lixun/Downloads/QQ20160923-0@2x.png" alt="照片"></p>
-<p>工程中会多出这些文件<br><img src="/Users/lixun/Downloads/QQ20160923-1@2x.png" alt="照片1"></p>
-<p>在MainInterface.storyboard中<br><img src="/Users/lixun/Downloads/QQ20160923-3@2x.png" alt="storyboard"><br>我们可以定制UI。</p>
+<p>工程中会多出这些文件</p>
+<p><img src="/Users/lixun/Downloads/QQ20160923-1@2x.png" alt="照片1"></p>
+<p>在MainInterface.storyboard中</p>
+<p><img src="/Users/lixun/Downloads/QQ20160923-3@2x.png" alt="storyboard"></p>
+<p>我们可以定制UI。</p>
 <p>当我们想纯代码构建UI时,在上图显示的Info.plist中NSExtension需要将NSExtensionMainStoryboard删掉,解除与storyboard的关联</p>
-<p>例子中用的storyboard构建UI。<br>当我们需要与APP通信时。需要用到 URL Shchemes。<br>首先给label添加手势</p>
+<p>例子中用的storyboard构建UI。 当我们需要与APP通信时。需要用到 URL Shchemes。首先给label添加手势</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">widgetLabel.addGestureRecognizer(UITapGestureRecognizer.init(target: self</div><div class="line">            , action: #selector(TodayViewController.widgetLabelAction)))</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@objc private  func widgetLabelAction() -&gt; Void &#123;</div><div class="line">       extensionContext?.open(NSURL(string: &quot;simple://finished&quot;) as! URL, completionHandler: nil)</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <p><img src="/Users/lixun/Downloads/QQ20160923-4@2x.png" alt="url schemes"></p>
