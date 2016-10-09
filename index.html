@@ -343,7 +343,7 @@
 <p>先执行类自身的实现，再执行类别(Category)中的实现</p>
 <h2 id="不需要调用-super-load-和-super-initialize"><a href="#不需要调用-super-load-和-super-initialize" class="headerlink" title="不需要调用[super load] 和 [super initialize]"></a>不需要调用[super load] 和 [super initialize]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize &#123;</div><div class="line">    //do initialization thing</div><div class="line">    [super initialize];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (void) load &#123;</div><div class="line">    //do some loading things</div><div class="line">    [super load];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样写是多余的</p>
-<p>在使用Method Swizzling或者需要对类进行一些初始化的时候,一般都在initialize的方法中,确保会调用这个类的方法时才会执行所需代码,而写在load方法中,即使这个类没有被使用也会执行相关代码,在使用Method Swizzling时在全局影响到这个类。写在initialize可以规避一些不必要的bug。</p>
+<h1 id="开发过程中需要注意"><a href="#开发过程中需要注意" class="headerlink" title="开发过程中需要注意"></a>开发过程中需要注意</h1><p>在使用Method Swizzling或者需要对类进行一些初始化的时候,一般都在initialize的方法中,确保会调用这个类的方法时才会执行所需代码,而写在load方法中,即使这个类没有被使用也会执行相关代码,在使用Method Swizzling时在全局影响到这个类。写在initialize可以规避一些不必要的bug。</p>
 <p>参考链接:<br><a href="http://www.cnblogs.com/ider/archive/2012/09/29/objective_c_load_vs_initialize.html" target="_blank" rel="external">Objective C类方法load和initialize的区别</a></p>
 
           
