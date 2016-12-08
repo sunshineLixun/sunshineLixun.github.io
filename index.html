@@ -258,6 +258,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/08/dispatch-semaphore-t-信号量/" itemprop="url">
+                  dispatch_semaphore_t 信号量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T16:20:14+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="dispatch-semaphore-create"><a href="#dispatch-semaphore-create" class="headerlink" title="dispatch semaphore  create"></a>dispatch<em> semaphore </em> create</h1><p><code>dispatch_semaphore_create(long value)</code> 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0</p>
+<p>The starting value for the semaphore. Passing a value less than zero will cause NULL to be returned.</p>
+<p>则返回为NULL</p>
+<h1 id="dispatch-semaphore-wait"><a href="#dispatch-semaphore-wait" class="headerlink" title="dispatch semaphore  wait"></a>dispatch<em> semaphore </em> wait</h1><p>该函数会使传入的信号量减1,当信号量有 &gt;= 1时,就会继续往下执行。如果没有,该线程就会一直处于等待状态，可阻塞当前线程。该函数需要传入另一个参数 </p>
+<p>`#define DISPATCH_TIME_NOW  表示从现在开始</p>
+<p>#define DISPATCH_TIME_FOREVER  表示永不超时`</p>
+<h1 id="dispatch-semaphore-single"><a href="#dispatch-semaphore-single" class="headerlink" title="dispatch semaphore  single"></a>dispatch<em> semaphore </em> single</h1><p>该函数会使传入的信号量加1,与<code>dispatch_ semaphore _ wait</code>成对出现。</p>
+<p>拿YYKit源码来举例：在#import “UIButton+YYWebImage.m”中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">- (instancetype)init &#123;</div><div class="line">    self = [super init];</div><div class="line">    //声明一个信号总量为1信号量</div><div class="line">    _lock = dispatch_semaphore_create(1);</div><div class="line">    _dic = [NSMutableDictionary new];</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (_YYWebImageSetter *)setterForState:(NSNumber *)state &#123;</div><div class="line"></div><div class="line">//是当前线程处于阻塞状态,直到有 &gt;= 1 信号量才会继续执行下面的取值操作</div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYWebImageSetter *setter = _dic[state];</div><div class="line">    //使该信号量加1。保持信号量的平衡，如果没有保持信号量的平衡,可能会出现莫名的bug,甚至crash。</div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    return setter;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (_YYWebImageSetter *)lazySetterForState:(NSNumber *)state &#123;</div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYWebImageSetter *setter = _dic[state];</div><div class="line">    if (!setter) &#123;</div><div class="line">        setter = [_YYWebImageSetter new];</div><div class="line">        _dic[state] = setter;</div><div class="line">    &#125;</div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    return setter;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在读取_YYWebImageSetter该函数中使用<code>dispatch_semaphore_wait</code>和<code>dispatch_semaphore_signal</code>使当前函数为线程安全。实际上信号量就是锁，它与 <code>@synchronized</code> 函数看起来很像。所起到的作用就是至始至终只会有一个线程去访问该函数。</p>
+<p>在 <a href="http://www.cnblogs.com/snailHL/p/3906112.html" target="_blank" rel="external">这边文章中</a>很形象的比喻了信号量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">关于信号量，一般可以用停车来比喻。</div><div class="line"></div><div class="line">　　停车场剩余4个车位，那么即使同时来了四辆车也能停的下。如果此时来了五辆车，那么就有一辆需要等待。</div><div class="line"></div><div class="line">　　信号量的值就相当于剩余车位的数目，dispatch_semaphore_wait函数就相当于来了一辆车，dispatch_semaphore_signal</div><div class="line"></div><div class="line">　　就相当于走了一辆车。停车位的剩余数目在初始化的时候就已经指明了（dispatch_semaphore_create（long value）），</div><div class="line"></div><div class="line">　　调用一次dispatch_semaphore_signal，剩余的车位就增加一个；调用一次dispatch_semaphore_wait剩余车位就减少一个；</div><div class="line"></div><div class="line">　　当剩余车位为0时，再来车（即调用dispatch_semaphore_wait）就只能等待。有可能同时有几辆车等待一个停车位。有些车主</div><div class="line"></div><div class="line">　　没有耐心，给自己设定了一段等待时间，这段时间内等不到停车位就走了，如果等到了就开进去停车。而有些车主就像把车停在这，</div><div class="line"></div><div class="line">　　所以就一直等下去。</div></pre></td></tr></table></figure>
+<p>　<br>　<br>　举个简单的例子<br>　<br>　<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *array = [NSMutableArray array];</div><div class="line"> dispatch_semaphore_t semphore = dispatch_semaphore_create(1);</div><div class="line"> dispatch_queue_t concurrentQueue = dispatch_queue_create(&quot;com.starming.gcddemo.concurrentqueue&quot;,DISPATCH_QUEUE_CONCURRENT);</div><div class="line">      </div><div class="line">      NSLog(@&quot;%f&quot;,CFAbsoluteTimeGetCurrent());</div><div class="line">      dispatch_apply(100, concurrentQueue, ^(size_t i) &#123;</div><div class="line">          dispatch_semaphore_wait(semphore, DISPATCH_TIME_FOREVER);</div><div class="line">         </div><div class="line">          /*</div><div class="line">          @synchronized (array) &#123;</div><div class="line">              [array addObject:[NSNumber numberWithUnsignedInteger:i]];</div><div class="line">          &#125;</div><div class="line">           */</div><div class="line">          </div><div class="line">          [array addObject:[NSNumber numberWithUnsignedInteger:i]];</div><div class="line">          </div><div class="line">          dispatch_semaphore_signal(semphore);</div><div class="line">          </div><div class="line">      &#125;);</div><div class="line">      </div><div class="line">      NSLog(@&quot;%@&quot;,array);</div></pre></td></tr></table></figure></p>
+<p>　　
+　　</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/14/cocoapods升级1.1.0/" itemprop="url">
                   cocoapods 更新到最新版本(1.1.0)
                 </a>
@@ -1202,7 +1329,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
