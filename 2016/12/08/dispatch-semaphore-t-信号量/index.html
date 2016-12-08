@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="dispatch  semaphore  createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
-The starting value for the semaphore. Passing a value less than zero wi">
+<meta name="description" content="dispatch_semaphore_createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
+The starting value for the semaphore. Passing a value less than zero will">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dispatch_semaphore_t 信号量">
 <meta property="og:url" content="http://yoursite.com/2016/12/08/dispatch-semaphore-t-信号量/index.html">
 <meta property="og:site_name" content="Sunshine">
-<meta property="og:description" content="dispatch  semaphore  createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
-The starting value for the semaphore. Passing a value less than zero wi">
-<meta property="og:updated_time" content="2016-12-08T09:16:47.000Z">
+<meta property="og:description" content="dispatch_semaphore_createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
+The starting value for the semaphore. Passing a value less than zero will">
+<meta property="og:updated_time" content="2016-12-08T09:17:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dispatch_semaphore_t 信号量">
-<meta name="twitter:description" content="dispatch  semaphore  createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
-The starting value for the semaphore. Passing a value less than zero wi">
+<meta name="twitter:description" content="dispatch_semaphore_createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
+The starting value for the semaphore. Passing a value less than zero will">
 
 
 
@@ -318,12 +318,12 @@ The starting value for the semaphore. Passing a value less than zero wi">
       
 
       
-        <h1 id="dispatch-semaphore-create"><a href="#dispatch-semaphore-create" class="headerlink" title="dispatch  semaphore  create"></a>dispatch <em> semaphore </em> create</h1><p><code>dispatch_semaphore_create(long value)</code> 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0</p>
+        <h1 id="dispatch-semaphore-create"><a href="#dispatch-semaphore-create" class="headerlink" title="dispatch_semaphore_create"></a>dispatch_semaphore_create</h1><p><code>dispatch_semaphore_create(long value)</code> 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0</p>
 <p>The starting value for the semaphore. Passing a value less than zero will cause NULL to be returned.</p>
 <p>则返回为NULL</p>
-<h1 id="dispatch-semaphore-wait"><a href="#dispatch-semaphore-wait" class="headerlink" title="dispatch  semaphore  wait"></a>dispatch <em> semaphore </em> wait</h1><p>该函数会使传入的信号量减1,当信号量有 &gt;= 1时,就会继续往下执行。如果没有,该线程就会一直处于等待状态，可阻塞当前线程。该函数需要传入另一个参数 </p>
+<h1 id="dispatch-semaphore-wait"><a href="#dispatch-semaphore-wait" class="headerlink" title="dispatch_semaphore_wait"></a>dispatch_semaphore_wait</h1><p>该函数会使传入的信号量减1,当信号量有 &gt;= 1时,就会继续往下执行。如果没有,该线程就会一直处于等待状态，可阻塞当前线程。该函数需要传入另一个参数 </p>
 <p><code>#define DISPATCH_TIME_NOW  表示从现在开始 #define DISPATCH_TIME_FOREVER  表示永不超时</code></p>
-<h1 id="dispatch-semaphore-single"><a href="#dispatch-semaphore-single" class="headerlink" title="dispatch  semaphore  single"></a>dispatch <em> semaphore </em> single</h1><p>该函数会使传入的信号量加1,与<code>dispatch_ semaphore _ wait</code>成对出现。</p>
+<h1 id="dispatch-semaphore-single"><a href="#dispatch-semaphore-single" class="headerlink" title="dispatch_semaphore_single"></a>dispatch_semaphore_single</h1><p>该函数会使传入的信号量加1,与<code>dispatch_ semaphore _ wait</code>成对出现。</p>
 <p>拿YYKit源码来举例：在#import “UIButton+YYWebImage.m”中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">- (instancetype)init &#123;</div><div class="line">    self = [super init];</div><div class="line">    //声明一个信号总量为1信号量</div><div class="line">    _lock = dispatch_semaphore_create(1);</div><div class="line">    _dic = [NSMutableDictionary new];</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (_YYWebImageSetter *)setterForState:(NSNumber *)state &#123;</div><div class="line"></div><div class="line">//是当前线程处于阻塞状态,直到有 &gt;= 1 信号量才会继续执行下面的取值操作</div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYWebImageSetter *setter = _dic[state];</div><div class="line">    //使该信号量加1。保持信号量的平衡，如果没有保持信号量的平衡,可能会出现莫名的bug,甚至crash。</div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    return setter;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (_YYWebImageSetter *)lazySetterForState:(NSNumber *)state &#123;</div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYWebImageSetter *setter = _dic[state];</div><div class="line">    if (!setter) &#123;</div><div class="line">        setter = [_YYWebImageSetter new];</div><div class="line">        _dic[state] = setter;</div><div class="line">    &#125;</div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    return setter;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在读取_YYWebImageSetter该函数中使用<code>dispatch_semaphore_wait</code>和<code>dispatch_semaphore_signal</code>使当前函数为线程安全。实际上信号量就是锁，它与 <code>@synchronized</code> 函数看起来很像。所起到的作用就是至始至终只会有一个线程去访问该函数。</p>
@@ -494,7 +494,7 @@ The starting value for the semaphore. Passing a value less than zero wi">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-create"><span class="nav-number">1.</span> <span class="nav-text">dispatch  semaphore  create</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-wait"><span class="nav-number">2.</span> <span class="nav-text">dispatch  semaphore  wait</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-single"><span class="nav-number">3.</span> <span class="nav-text">dispatch  semaphore  single</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-create"><span class="nav-number">1.</span> <span class="nav-text">dispatch_semaphore_create</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-wait"><span class="nav-number">2.</span> <span class="nav-text">dispatch_semaphore_wait</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatch-semaphore-single"><span class="nav-number">3.</span> <span class="nav-text">dispatch_semaphore_single</span></a></li></ol></div>
             
           </div>
         </section>
