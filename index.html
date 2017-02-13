@@ -913,7 +913,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/24/3D - Touch之Peek & Pop/" itemprop="url">
-                  未命名
+                  3D - Touch（二）之Peek & Pop
                 </a>
               
             
@@ -931,6 +931,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -956,8 +975,7 @@
       
         
           
-            <h2 id="——"><a href="#——" class="headerlink" title="——-"></a>——-</h2><p>title: 3D - Touch（二）之Peek &amp; Pop<br>categories: Swift<br>tags: iOS</p>
-<h2 id="date-2016-09-24-10-21-50"><a href="#date-2016-09-24-10-21-50" class="headerlink" title="date: 2016-09-24 10:21:50"></a>date: 2016-09-24 10:21:50</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="创建视图-sourceView"><a href="#创建视图-sourceView" class="headerlink" title="创建视图(sourceView)"></a>创建视图(sourceView)</h2><p>首先用tableview来做例子。用storyboard创建表,在这里就不赘述了。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> titleArray = [<span class="string">"3D-Touch Objective-C"</span>,<span class="string">"3D-Touch Swift"</span>,<span class="string">"前言快报:Swift终将超越OC,进而取代OC"</span>,<span class="string">"Github9月编程语言 JS 跃居第一位"</span>]</div></pre></td></tr></table></figure>
 <p>创建一个数组来做tableview的数据源。</p>
