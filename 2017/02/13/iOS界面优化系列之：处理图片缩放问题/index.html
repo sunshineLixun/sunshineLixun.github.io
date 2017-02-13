@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-7663f55e36043484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-2c7369df156405e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-833bed416800300a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-02-13T07:26:43.000Z">
+<meta property="og:updated_time" content="2017-02-13T07:27:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS界面优化系列之：处理图片缩放问题">
 <meta name="twitter:description" content="在众多阅读类的APP中，比如:
@@ -336,7 +336,7 @@
 ![IMG_0782.PNG](http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 "></p>
 <p>这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。</p>
-<p>像这种异步加载图片的开源库有很多：<code>SD_WebImageView</code>  <code>YYWebImage  Kingfisher</code>  <code>PINRemoteImage</code> …<br>开发者如果只是简单的调用一下 sd_setImageWithURL: 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageView的尺寸不一致,就会导致这种结果。</p>
+<p>像这种异步加载图片的开源库有很多：<code>SD_WebImageView</code>  <code>YYWebImage  Kingfisher</code>  <code>PINRemoteImage</code> …<br>开发者如果只是简单的调用一下 <code>sd_setImageWithURL:</code> 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageView的尺寸不一致,就会导致这种结果。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-131912.png"><br>如果是真机调试 打开<code>Instruments</code>中<code>Core Animation</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-66c55b53453df8db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135233.png"><br>在右侧栏中打开<br><img src="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135327.png"><br>如果是模拟器，打开Debug -&gt;Color Misaligned Images</p>
 <p>这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。**黄色、紫色越多，性能越差。</p>
 <p>解决办法：<br>1.与后台协商，让后台返回的图片尺寸与客户端UIImageView尺寸一致;<br>2.自己处理。</p>
