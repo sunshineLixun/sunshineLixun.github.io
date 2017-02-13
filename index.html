@@ -258,6 +258,149 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/13/iOS界面优化系列之：处理图片缩放问题/" itemprop="url">
+                  iOS界面优化系列之：处理图片缩放问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-13T14:56:05+08:00" content="2017-02-13">
+              2017-02-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在众多阅读类的APP中，比如:<br><img src="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="
+![IMG_0782.PNG](http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+"></p>
+<p>这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。</p>
+<p>像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  Kingfisher  PINRemoteImage …<br>开发者如果只是简单的调用一下 sd_setImageWithURL: 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageView的尺寸不一致,就会导致这种结果。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-131912.png"><br>如果是真机调试 打开<code>Instruments</code>中<code>Core Animation</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-66c55b53453df8db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135233.png"><br>在右侧栏中打开<br><img src="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135327.png"><br>如果是模拟器，打开Debug -&gt;Color Misaligned Images</p>
+<p>这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。**黄色、紫色越多，性能越差。</p>
+<p>解决办法：<br>1.与后台协商，让后台返回的图片尺寸与客户端UIImageView尺寸一致;<br>2.自己处理。</p>
+<p>下面介绍下如何自己处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">extension UIImage &#123;</div><div class="line">    func resizeImage(_ image: UIImage, targetSize: CGSize) -&gt; UIImage? &#123;</div><div class="line">            let newRect = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height).integral</div><div class="line">            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0)</div><div class="line">            if let context = UIGraphicsGetCurrentContext() &#123;</div><div class="line">                context.interpolationQuality = .high</div><div class="line">                let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: targetSize.height)</div><div class="line">                context.concatenate(flipVertical)</div><div class="line">                context.draw(self.cgImage!, in: newRect)</div><div class="line">                let newImage = UIImage(cgImage: context.makeImage()!)</div><div class="line">                UIGraphicsEndImageContext()</div><div class="line">               return newImage</div><div class="line">            &#125;</div><div class="line">        return nil</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很简单就是网络下载下来的图片按照自己设置的UIImageView的尺寸来重新draw一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func setImage&lt;T: UIImageView&gt;(_ imageView: T, URLString: String, targetSize: CGSize)&#123;</div><div class="line">        imageView.pin_setImage(from: URL.init(string: URLString), completion: &#123;(PINRemoteImageManagerResult) in</div><div class="line">            if let image = PINRemoteImageManagerResult.image&#123;</div><div class="line">                    imageView.image = image.resizeImage(image, targetSize: targetSize)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>重新给UIImageView设置image属性</p>
+<p>重新打开Color Misaligned Images功能来检测一下<br><img src="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-140353.png"></p>
+<p>嗯！ 不错哦，之前的黄色没有了。 本以为就达到了的要求。</p>
+<p>但是用<code>Instruments</code>中<code>Time Profiler</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-0556297eefe06581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-140732.png"><br>来检测下处理该函数所需要的时间</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-758e84ae67a3697e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-141255.png"></p>
+<p>用Core Animation来测下FPS</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-7663f55e36043484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-142314.png"></p>
+<p>虽然已经很流畅了（注：文本用到了异步绘制）,  基本在54左右， 但是距离满帧59 - 60还差那么一丢丢。</p>
+<p>再来观察给UIImage扩展的这个方法 发现它是在主线程中执行，当快速滑动表格时，会有大量的图片在主线程中重新绘制。这个是造成缺失那几帧的主要原因。</p>
+<p>解决办法：那就在子线程总去draw, 在主线程中去显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">extension UIImageView &#123;</div><div class="line">    func drawImage(_ image: UIImage, targetSize: CGSize) &#123;</div><div class="line">        DispatchQueue.global().async &#123;</div><div class="line">            let newRect = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height).integral</div><div class="line">            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0)</div><div class="line">            if let context = UIGraphicsGetCurrentContext() &#123;</div><div class="line">                context.interpolationQuality = .high</div><div class="line">                let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: targetSize.height)</div><div class="line">                context.concatenate(flipVertical)</div><div class="line">                context.draw(image.cgImage!, in: newRect)</div><div class="line">                let newImage = UIImage(cgImage: context.makeImage()!)</div><div class="line">                UIGraphicsEndImageContext()</div><div class="line">                DispatchQueue.main.async &#123;</div><div class="line">                    self.layer.contents = newImage.cgImage</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Objective-C</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (void)drawImage:(UIImage *)image targetSize:(CGSize )size&#123;</div><div class="line">    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^&#123;</div><div class="line">        CGRect newRect = CGRectMake(0, 0, size.width, size.height);</div><div class="line">        CGRectIntegral(newRect);</div><div class="line">        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);</div><div class="line">        CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);</div><div class="line">        CGAffineTransform transform = CGAffineTransformMake(1, 0, 0, -1, 0, size.height);</div><div class="line">        CGContextConcatCTM(context, transform);</div><div class="line">        CGContextDrawImage(context, newRect, image.CGImage);</div><div class="line">        CGImageRef CGImage = context ? CGBitmapContextCreateImage(context) : nil;</div><div class="line">        UIImage *newImage = CGImage ? [UIImage imageWithCGImage:CGImage] : nil;</div><div class="line">        UIGraphicsEndImageContext();</div><div class="line">        if (CGImage)&#123;</div><div class="line">            CGImageRelease(CGImage);</div><div class="line">        &#125;</div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">            if (newImage) &#123;</div><div class="line">                self.layer.contents = (__bridge id _Nullable)(newImage.CGImage);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法也很简单,在子线程中去重新draw一个UIImage,在主线程中去显示。</p>
+<p>调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">func setImage&lt;T: UIImageView&gt;(_ imageView: T, URLString: String, targetSize: CGSize)&#123;</div><div class="line">        imageView.pin_setImage(from: URL.init(string: URLString), completion: &#123;(PINRemoteImageManagerResult) in</div><div class="line">            if let image = PINRemoteImageManagerResult.image&#123;</div><div class="line">                imageView.drawImage(image, targetSize: targetSize)</div><div class="line">//                    imageView.image = image.resizeImage(image, targetSize: targetSize)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>重新测下帧数以及Time Profile</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-2c7369df156405e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-143643.png"><br>当快速滑动的时候基本上能够达到慢帧的状态</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-833bed416800300a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-143924.png"><br>所用的时间也是非常少的。在16ms以内。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/08/dispatch-semaphore-t-信号量/" itemprop="url">
                   dispatch_semaphore_t 信号量
                 </a>
@@ -768,7 +911,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/24/3D - Touch之Peek & Pop/" itemprop="url">
-                  3D - Touch（二）之Peek & Pop
+                  未命名
                 </a>
               
             
@@ -786,25 +929,6 @@
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -830,7 +954,8 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。</p>
+            <h2 id="——"><a href="#——" class="headerlink" title="——-"></a>——-</h2><p>title: 3D - Touch（二）之Peek &amp; Pop<br>categories: Swift<br>tags: iOS</p>
+<h2 id="date-2016-09-24-10-21-50"><a href="#date-2016-09-24-10-21-50" class="headerlink" title="date: 2016-09-24 10:21:50"></a>date: 2016-09-24 10:21:50</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="创建视图-sourceView"><a href="#创建视图-sourceView" class="headerlink" title="创建视图(sourceView)"></a>创建视图(sourceView)</h2><p>首先用tableview来做例子。用storyboard创建表,在这里就不赘述了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var titleArray = [&quot;3D-Touch Objective-C&quot;,&quot;3D-Touch Swift&quot;,&quot;前言快报:Swift终将超越OC,进而取代OC&quot;,&quot;Github9月编程语言 JS 跃居第一位&quot;]</div></pre></td></tr></table></figure>
 <p>创建一个数组来做tableview的数据源。</p>
@@ -1328,7 +1453,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1393,7 +1518,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
