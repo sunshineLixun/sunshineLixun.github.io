@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/10/iOS开发小技巧(一)/index.html">
 <meta property="og:site_name" content="Sunshine">
 <meta property="og:description" content="改变UIImagePickerController的导航条以及title的颜色12345678910- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)a">
-<meta property="og:updated_time" content="2017-02-16T02:44:42.000Z">
+<meta property="og:updated_time" content="2017-02-16T02:48:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发小技巧(一)">
 <meta name="twitter:description" content="改变UIImagePickerController的导航条以及title的颜色12345678910- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)a">
@@ -324,6 +324,36 @@
 <h3 id="swift"><a href="#swift" class="headerlink" title="swift"></a>swift</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIResponder</span></span>&#123;</div><div class="line">    </div><div class="line">   <span class="keyword">private</span> <span class="class"><span class="keyword">struct</span> <span class="title">AssociatedKey</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">AssociatedName</span> = <span class="string">"AssociatedName"</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> indexPath: <span class="type">NSIndexPath</span>?&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">           <span class="keyword">return</span> objc_getAssociatedObject(<span class="keyword">self</span>, &amp;<span class="type">AssociatedKey</span>.<span class="type">AssociatedName</span>) <span class="keyword">as</span>? <span class="type">NSIndexPath</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> newValue = newValue &#123;</div><div class="line">                objc_setAssociatedObject(<span class="keyword">self</span>, &amp;<span class="type">AssociatedKey</span>.<span class="type">AssociatedName</span>, newValue <span class="keyword">as</span> <span class="type">NSIndexPath</span> , .<span class="type">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="UIRefreshControl"><a href="#UIRefreshControl" class="headerlink" title="UIRefreshControl"></a>UIRefreshControl</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> refresh = <span class="type">UIRefreshControl</span>.<span class="keyword">init</span>()</div><div class="line">        refresh.tintColor = <span class="type">UIColor</span>.red</div><div class="line">        refresh.attributedTitle = <span class="type">NSAttributedString</span>.<span class="keyword">init</span>(string: <span class="string">"正在加载"</span>)</div><div class="line">        refresh.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">ViewController</span>.refreshTabeleView(sender:)), <span class="keyword">for</span>: <span class="type">UIControlEvents</span>.valueChanged)</div><div class="line">        </div><div class="line">        </div><div class="line">        tableView.refreshControl = refresh</div><div class="line">        tableView.addSubview(refresh)</div><div class="line">        tableView.reloadData()</div></pre></td></tr></table></figure>
 <h1 id="将HTML字符串转化为NSAttributedString富文本字符串"><a href="#将HTML字符串转化为NSAttributedString富文本字符串" class="headerlink" title="将HTML字符串转化为NSAttributedString富文本字符串"></a>将HTML字符串转化为NSAttributedString富文本字符串</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSAttributedString</span> *)attributedStringWithHTMLString:(<span class="built_in">NSString</span> *)htmlString</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSDictionary</span> *options = @&#123; <span class="built_in">NSDocumentTypeDocumentAttribute</span> : <span class="built_in">NSHTMLTextDocumentType</span>,</div><div class="line">                               <span class="built_in">NSCharacterEncodingDocumentAttribute</span> :@(<span class="built_in">NSUTF8StringEncoding</span>) &#125;;</div><div class="line">   </div><div class="line">    <span class="built_in">NSData</span> *data = [htmlString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</div><div class="line">   </div><div class="line">    <span class="keyword">return</span> [[<span class="built_in">NSAttributedString</span> alloc] initWithData:data options:options documentAttributes:<span class="literal">nil</span> error:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#CABasicAnimation（CAKeyframeAnimation）key path 取值</p>
+<p>##keyPath可以使用的key</p>
+<ul>
+<li>define angle2Radian(angle) ((angle)/180.0*M_PI)</li>
+</ul>
+<p>transform.rotation.x 围绕x轴翻转 参数：角度 angle2Radian(4)</p>
+<p>transform.rotation.y 围绕y轴翻转 参数：同上</p>
+<p>transform.rotation.z 围绕z轴翻转 参数：同上</p>
+<p>transform.rotation 默认围绕z轴</p>
+<p>transform.scale.x x方向缩放 参数：缩放比例 1.5</p>
+<p>transform.scale.y y方向缩放 参数：同上</p>
+<p>transform.scale.z z方向缩放 参数：同上</p>
+<p>transform.scale 所有方向缩放 参数：同上</p>
+<p>transform.translation.x x方向移动 参数：x轴上的坐标 100</p>
+<p>transform.translation.y x方向移动 参数：y轴上的坐标</p>
+<p>transform.translation.z x方向移动 参数：z轴上的坐标</p>
+<p>transform.translation 移动 参数：移动到的点 （100，100）</p>
+<p>opacity 透明度 参数：透明度 0.5</p>
+<p>backgroundColor 背景颜色 参数：颜色 (id)[[UIColor redColor] CGColor]</p>
+<p>cornerRadius 圆角 参数：圆角半径 5</p>
+<p>borderWidth 边框宽度 参数：边框宽度 5</p>
+<p>bounds 大小 参数：CGRect</p>
+<p>contents 内容 参数：CGImage</p>
+<p>contentsRect 可视内容 参数：CGRect 值是0～1之间的小数</p>
+<p>hidden 是否隐藏</p>
+<p>position</p>
+<p>shadowColor</p>
+<p>shadowOffset</p>
+<p>shadowOpacity</p>
+<p>shadowRadius</p>
 
       
     </div>
