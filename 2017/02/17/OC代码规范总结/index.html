@@ -87,7 +87,8 @@
 <meta name="description" content="Objective-C-Coding-Guidelines-In-Chines本篇为转载文章（供自己学习/查阅）概要Objective-C是一门面向对象的动态编程语言，主要用于编写iOS和Mac应用程序。关于Objective-C的编码规范，苹果和谷歌都已经有很好的总结：
 
 Apple Coding Guidelines for Cocoa
-Google Objective-C Style Gui">
+
+本文主要整合了对上述文档的翻译、作者自己的编程经验和其">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC代码规范总结">
 <meta property="og:url" content="http://yoursite.com/2017/02/17/OC代码规范总结/index.html">
@@ -95,15 +96,17 @@ Google Objective-C Style Gui">
 <meta property="og:description" content="Objective-C-Coding-Guidelines-In-Chines本篇为转载文章（供自己学习/查阅）概要Objective-C是一门面向对象的动态编程语言，主要用于编写iOS和Mac应用程序。关于Objective-C的编码规范，苹果和谷歌都已经有很好的总结：
 
 Apple Coding Guidelines for Cocoa
-Google Objective-C Style Gui">
+
+本文主要整合了对上述文档的翻译、作者自己的编程经验和其">
 <meta property="og:image" content="https://raw.github.com/onevcat/VVDocumenter-Xcode/master/ScreenShot.gif">
-<meta property="og:updated_time" content="2017-05-04T14:37:16.000Z">
+<meta property="og:updated_time" content="2017-05-04T14:40:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC代码规范总结">
 <meta name="twitter:description" content="Objective-C-Coding-Guidelines-In-Chines本篇为转载文章（供自己学习/查阅）概要Objective-C是一门面向对象的动态编程语言，主要用于编写iOS和Mac应用程序。关于Objective-C的编码规范，苹果和谷歌都已经有很好的总结：
 
 Apple Coding Guidelines for Cocoa
-Google Objective-C Style Gui">
+
+本文主要整合了对上述文档的翻译、作者自己的编程经验和其">
 <meta name="twitter:image" content="https://raw.github.com/onevcat/VVDocumenter-Xcode/master/ScreenShot.gif">
 
 
@@ -329,7 +332,6 @@ Google Objective-C Style Gui">
         <h1 id="Objective-C-Coding-Guidelines-In-Chines"><a href="#Objective-C-Coding-Guidelines-In-Chines" class="headerlink" title="Objective-C-Coding-Guidelines-In-Chines"></a>Objective-C-Coding-Guidelines-In-Chines</h1><h1 id="本篇为转载文章（供自己学习-查阅）"><a href="#本篇为转载文章（供自己学习-查阅）" class="headerlink" title="本篇为转载文章（供自己学习/查阅）"></a>本篇为转载文章（供自己学习/查阅）</h1><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Objective-C是一门面向对象的动态编程语言，主要用于编写iOS和Mac应用程序。关于Objective-C的编码规范，苹果和谷歌都已经有很好的总结：</p>
 <ul>
 <li><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html" target="_blank" rel="external">Apple Coding Guidelines for Cocoa</a></li>
-<li><a href="https://google-styleguide.googlecode.com/svn/trunk/objcguide.xml?showone=Line_Length#Line_Length" target="_blank" rel="external">Google Objective-C Style Guide</a></li>
 </ul>
 <p>本文主要整合了对上述文档的翻译、作者自己的编程经验和其他的相关资料，为公司总结出一份通用的编码规范。</p>
 <h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><h3 id="使用空格而不是制表符Tab"><a href="#使用空格而不是制表符Tab" class="headerlink" title="使用空格而不是制表符Tab"></a>使用空格而不是制表符Tab</h3><p>不要在工程里使用Tab键，使用空格来进行缩进。在<code>Xcode &gt; Preferences &gt; Text Editing</code>将Tab和自动缩进都设置为<strong>4</strong>个空格。（<em>Google的标准是使用两个空格来缩进，但这里还是推荐使用Xcode默认的设置。</em>）</p>
