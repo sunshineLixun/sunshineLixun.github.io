@@ -87,8 +87,7 @@
 <meta name="description" content="共同点方法只会被调用一次(相对于runtime而言)
 区别load方法声明一个SuperClass类继承与NSObject 
 1234@implementation SuperClass+ (void) load &amp;#123;  NSLog(@&quot;加载load方法&quot;); &amp;#125;
-在main.m文件中导入头文件 #import &amp;quot;SuperClass.h&amp;quot;
-控制台打印输出 T">
+1234567int main(int argc, char * argv[]) &amp;#123;	@autorelea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="load VS initialize">
 <meta property="og:url" content="http://yoursite.com/2016/10/09/load VS initialize/index.html">
@@ -96,16 +95,14 @@
 <meta property="og:description" content="共同点方法只会被调用一次(相对于runtime而言)
 区别load方法声明一个SuperClass类继承与NSObject 
 1234@implementation SuperClass+ (void) load &amp;#123;  NSLog(@&quot;加载load方法&quot;); &amp;#125;
-在main.m文件中导入头文件 #import &amp;quot;SuperClass.h&amp;quot;
-控制台打印输出 T">
-<meta property="og:updated_time" content="2017-02-13T07:17:16.000Z">
+1234567int main(int argc, char * argv[]) &amp;#123;	@autorelea">
+<meta property="og:updated_time" content="2017-06-04T14:34:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="load VS initialize">
 <meta name="twitter:description" content="共同点方法只会被调用一次(相对于runtime而言)
 区别load方法声明一个SuperClass类继承与NSObject 
 1234@implementation SuperClass+ (void) load &amp;#123;  NSLog(@&quot;加载load方法&quot;); &amp;#125;
-在main.m文件中导入头文件 #import &amp;quot;SuperClass.h&amp;quot;
-控制台打印输出 T">
+1234567int main(int argc, char * argv[]) &amp;#123;	@autorelea">
 
 
 
@@ -330,9 +327,10 @@
         <h1 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h1><p>方法只会被调用一次(相对于runtime而言)</p>
 <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><h2 id="load方法"><a href="#load方法" class="headerlink" title="load方法"></a>load方法</h2><p>声明一个SuperClass类继承与NSObject </p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SuperClass</span></span></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">  <span class="built_in">NSLog</span>(<span class="string">@"加载load方法"</span>); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在main.m文件中导入头文件 <code>#import &quot;SuperClass.h&quot;</code></p>
-<p>控制台打印输出 <code>Test[1558:44427] 加载load方法</code></p>
-<p>得出结论:load是只要类所在文件被引用就会被调用</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">	<span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">		<span class="built_in">NSLog</span>(<span class="string">@"main"</span>);</div><div class="line"></div><div class="line">	    <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>控制台打印输出 <code>load 
+main</code></p>
+<p>得出结论:load方法在程序启动前就会调用。在main函数之前调用。</p>
 <h2 id="initialize方法"><a href="#initialize方法" class="headerlink" title="initialize方法"></a>initialize方法</h2><p>执行以下代码</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>控制台打印输出</p>
