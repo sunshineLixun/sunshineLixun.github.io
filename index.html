@@ -258,6 +258,99 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/22/记一次面试小结/" itemprop="url">
+                  记一次面试小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-22T09:49:09+08:00" content="2017-06-22">
+              2017-06-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/13/iOS界面优化系列之：处理图片缩放问题/" itemprop="url">
                   iOS界面优化系列之：处理图片缩放问题
                 </a>
@@ -734,6 +827,18 @@
 <h1 id="全屏手势返回"><a href="#全屏手势返回" class="headerlink" title="全屏手势返回"></a>全屏手势返回</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIPanGestureRecognizer</span> *pan = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span>.interactivePopGestureRecognizer.delegate action:<span class="keyword">@selector</span>(handleNavigationTransition:)];</div><div class="line">pan.delegate = <span class="keyword">self</span>;</div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:pan];</div></pre></td></tr></table></figure>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.childViewControllers.count &gt; <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="UITextView的placeholder"><a href="#UITextView的placeholder" class="headerlink" title="UITextView的placeholder"></a>UITextView的placeholder</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textViewDidBeginEditing:(<span class="built_in">UITextView</span> *)textView &#123;</div><div class="line">    [<span class="keyword">self</span> resetTextViewPlaceholderWithText:textView];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)textViewDidEndEditing:(<span class="built_in">UITextView</span> *)textView &#123;</div><div class="line">    [<span class="keyword">self</span> resetTextViewPlaceholderWithText:textView];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)resetTextViewPlaceholderWithText:(<span class="built_in">UITextView</span> *)textView</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView.text isEqualToString:<span class="string">@"要显示的placeholder"</span>]) &#123;</div><div class="line">        textView.text = <span class="string">@""</span>;</div><div class="line">        textView.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (textView.text.length &lt; <span class="number">1</span>) &#123;</div><div class="line">        textView.text = <span class="string">@"要显示的placeholder"</span>;</div><div class="line">        textView.textColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.87</span> green:<span class="number">0.87</span> blue:<span class="number">0.87</span> alpha:<span class="number">1.00</span>];</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="让应用支持摇一摇"><a href="#让应用支持摇一摇" class="headerlink" title="让应用支持摇一摇"></a>让应用支持摇一摇</h1><ul>
+<li>开启摇一摇权限</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIApplication</span> sharedApplication].applicationSupportsShakeToEdit = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>让view/viewcontroller成为第一响应者</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - UIResponder</span></div><div class="line">- (<span class="built_in">BOOL</span>)canBecomeFirstResponder &#123;</div><div class="line">	<span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>实现方发</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 摇动</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动开始</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionBegan:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="keyword">if</span> (motion == <span class="built_in">UIEventSubtypeMotionShake</span>) &#123;</div><div class="line">    <span class="comment">// do some thing</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动结束</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionEnded:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动取消</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionCancelled:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1482,7 +1587,7 @@ main</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
