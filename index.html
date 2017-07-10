@@ -258,6 +258,140 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/10/React-Native-自定义组件/" itemprop="url">
+                  React-Native 自定义组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-10T16:02:49+08:00" content="2017-07-10">
+              2017-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React-Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><p>自定义组件(Button)代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">    render()&#123;</div><div class="line">        <span class="comment">//解构</span></div><div class="line">        <span class="keyword">const</span> &#123;title,onClick&#125; = <span class="keyword">this</span>.props;</div><div class="line">        <span class="keyword">return</span>(</div><div class="line">            &lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;onClick&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;/TouchableOpacity&gt;</div><div class="line">        )</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>default```关键字：导出自定义组件,可以被别的js文件所引用。如果没有关键字,就只能在本js文件使用该类。例如在```Login.js``文件中可以用</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<p>import Button from ‘./Button’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">导入Button组件</div><div class="line"></div><div class="line">```js</div><div class="line">//解构</div><div class="line">const &#123;title,onClick&#125; = this.props;</div></pre></td></tr></table></figure></p>
+<p>解构从父组件的传过来的props, 子组件拿到父组件设置的属性值,显示传递的值或者处理传递过来的方法。</p>
+<p>列如上面代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">///显示Button的title</span></div><div class="line">&lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;<span class="keyword">this</span>.props.title&#125;&gt;</div><div class="line">&lt;/Text&gt;</div><div class="line"></div><div class="line"><span class="comment">///处理TouchableOpacity的点击事件</span></div><div class="line">&lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                  onPress=&#123;onClick&#125;&gt;</div><div class="line">&lt;/TouchableOpacity&gt;</div></pre></td></tr></table></figure>
+<p>父组件调用代码: 传递title信息和onClick方法回调</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;Button title=<span class="string">"登录"</span></div><div class="line">        onClick=&#123;() =&gt; alert(<span class="string">'点击了登录按钮'</span>)&#125;/&gt;</div></pre></td></tr></table></figure>
+<h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>与方法一的区别不大</p>
+<p>代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component,PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Text,TouchableOpacity,StyleSheet &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> propTypes = &#123;</div><div class="line">        title: PropTypes.string,</div><div class="line">        onPress: PropTypes.func</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">return</span>(</div><div class="line">            &lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;()=&gt;&#123;</div><div class="line">                                if (this.props.onPress) &#123;</div><div class="line">                                    this.props.onPress(this)</div><div class="line">                                &#125;</div><div class="line">                              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;/TouchableOpacity&gt;</div><div class="line">        )</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> propTypes = &#123;</div><div class="line">        title: PropTypes.string,</div><div class="line">        onPress: PropTypes.func</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>暴露出组件的属性(title)和方法(onPress)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;()=&gt;&#123;</div><div class="line">                                <span class="keyword">if</span> (<span class="keyword">this</span>.props.onPress) &#123;</div><div class="line">                                    <span class="keyword">this</span>.props.onPress(<span class="keyword">this</span>)</div><div class="line">                                &#125;</div><div class="line">                              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableOpacity&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>处理TouchableOpacity的点击事件,设置回调函数</li>
+<li>显示Button的title</li>
+</ul>
+<p>组件调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;Button  title=&quot;登录&quot;</div><div class="line">        onPress=&#123;() =&gt; alert(&apos;点击了登录按钮&apos;)&#125;/&gt;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/06/记一次React-Natice-StackNavigator使用小结/" itemprop="url">
                   记一次React Natice的StackNavigator使用小结
                 </a>
@@ -321,13 +455,13 @@
       
         
           
-            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> (</div><div class="line">  routeConfigMap: NavigationRouteConfigMap,</div><div class="line">  stackConfig: StackNavigatorConfig = &#123;&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> (</div><div class="line">  routeConfigMap: NavigationRouteConfigMap,</div><div class="line">  stackConfig: StackNavigatorConfig = &#123;&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
 <p>在<code>StackNavigator</code>的初始化中需要传入两个参数：<code>routeConfigMap</code> 表示路由配置参数, <code>stackConfig</code>表示配置<code>StackNavigatorConfig</code>一些样式或者属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> MainSrceenStackNavigator = StackNavigator(</div><div class="line">    &#123;</div><div class="line">        MainScreenNavigator: &#123;screen: MainScreenNavigator&#125;,</div><div class="line">        DiscoverDetail: &#123;screen: DiscoverDetail&#125;,</div><div class="line">        SettingDetail: &#123;screen: SettingDetail&#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        initialRouteName: <span class="string">'MainScreenNavigator'</span>,</div><div class="line">        mode:<span class="string">'card'</span>,</div><div class="line">        headerMode:<span class="string">'screen'</span>,</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> MainSrceenStackNavigator = StackNavigator(</div><div class="line">    &#123;</div><div class="line">        MainScreenNavigator: &#123;screen: MainScreenNavigator&#125;,</div><div class="line">        DiscoverDetail: &#123;screen: DiscoverDetail&#125;,</div><div class="line">        SettingDetail: &#123;screen: SettingDetail&#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        initialRouteName: <span class="string">'MainScreenNavigator'</span>,</div><div class="line">        mode:<span class="string">'card'</span>,</div><div class="line">        headerMode:<span class="string">'screen'</span>,</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
 <p>上述代码块配置了3个不同路由的界面，<code>initialRouteName</code>设置根导航控制器界面,默认第一个为根路由。<code>mode</code>表示界面的跳转方式:push或者模态弹出。<code>headerMode</code>表示界面在做跳转时的区域。有三种方式:<code>float</code>,<code>screen</code>,<code>none</code>。<code>float</code>表示不包括导航条在内;<code>screen</code>表示整个屏幕(包括导航条);<code>none</code>表示导航条的隐藏。还有很多属性可选配置。用到可在官网查询<a href="https://reactnavigation.org/docs/navigators/stack" target="_blank" rel="external">React Navigation
 </a>。</p>
 <h1 id="🌰"><a href="#🌰" class="headerlink" title="🌰"></a>🌰</h1><p>在<code>我的</code>界面配置导航条样式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> navigationOptions = (&#123;navigation&#125;)=&gt;(&#123;</div><div class="line">        <span class="comment">// tabBarLabel: '我的',</span></div><div class="line">        title: <span class="string">'我'</span>,</div><div class="line">        headerStyle:&#123;</div><div class="line">            backgroundColor: <span class="string">'black'</span></div><div class="line">        &#125;,</div><div class="line">        headerTitleStyle:&#123;</div><div class="line">            color: <span class="string">'white'</span> </div><div class="line">        &#125;,</div><div class="line">        tabBarIcon:(&#123;tintColor,focused&#125;) =&gt; (</div><div class="line">            &lt;TabBarItem  </div><div class="line">              tintColor=&#123;tintColor&#125;  </div><div class="line">              focused=&#123;focused&#125;  </div><div class="line">              normalImage=&#123;require('./source/我的@2x.png')&#125;  </div><div class="line">              selectedImage=&#123;require('./source/我的-选中@2x.png')&#125;  </div><div class="line">            /&gt;  </div><div class="line">        ),</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> navigationOptions = (&#123;navigation&#125;)=&gt;(&#123;</div><div class="line">        <span class="comment">// tabBarLabel: '我的',</span></div><div class="line">        title: <span class="string">'我'</span>,</div><div class="line">        headerStyle:&#123;</div><div class="line">            backgroundColor: <span class="string">'black'</span></div><div class="line">        &#125;,</div><div class="line">        headerTitleStyle:&#123;</div><div class="line">            color: <span class="string">'white'</span> </div><div class="line">        &#125;,</div><div class="line">        tabBarIcon:(&#123;tintColor,focused&#125;) =&gt; (</div><div class="line">            &lt;TabBarItem  </div><div class="line">              tintColor=&#123;tintColor&#125;  </div><div class="line">              focused=&#123;focused&#125;  </div><div class="line">              normalImage=&#123;<span class="built_in">require</span>(<span class="string">'./source/我的@2x.png'</span>)&#125;  </div><div class="line">              selectedImage=&#123;<span class="built_in">require</span>(<span class="string">'./source/我的-选中@2x.png'</span>)&#125;  </div><div class="line">            /&gt;  </div><div class="line">        ),</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
 <p>然后再显示出ListView(三个分区的ListView)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constructor</span>(props) &#123;</div><div class="line">        <span class="keyword">super</span>(props);</div><div class="line"></div><div class="line">        <span class="keyword">var</span> ds = <span class="keyword">new</span> ListView.DataSource(&#123;rowHasChanged: (r1, r2) =&gt; r1 !== r2,sectionHeaderHasChanged:(s1,s2)=&gt;s1 !== s2&#125;);</div><div class="line">        <span class="keyword">this</span>.state = &#123;</div><div class="line">            dataSource: ds.cloneWithRowsAndSections([[<span class="string">'钱包'</span>],[<span class="string">'收藏'</span>,<span class="string">'相册'</span>,<span class="string">'卡包'</span>,<span class="string">'表情'</span>],[<span class="string">'设置'</span>]]),</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">render()&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">                &lt;ListView </div><div class="line">                dataSource=&#123;this.state.dataSource&#125;</div><div class="line">                renderRow=&#123;this._renderRow.bind(this)&#125;</div><div class="line">                renderSeparator=&#123;this._renderSeparator&#125;&gt;</div><div class="line">                &lt;/ListView&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        )</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
@@ -1449,144 +1583,13 @@ main</code></p>
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/20/多种方法使tableView的Header下拉放大/" itemprop="url">
-                  多种方法使tableView的Header下拉放大
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T22:15:16+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学的这篇文章<a href="http://www.jianshu.com/p/859e3ef76b05" target="_blank" rel="external">【一行代码快速集成tableView头部缩放视图】</a>之后 。想着自己用其他的方法来实现这一效果，于是乎想到</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CGAffineTransformMakeScale</div></pre></td></tr></table></figure>
-<p>这一方法。</p>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip" alt="下拉放大.gif"></p>
-<h1 id="开始实现"><a href="#开始实现" class="headerlink" title="开始实现"></a>开始实现</h1><p>在自己写的过程中发现了一些问题, 直接把</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.tableView.tableHeaderView = <span class="keyword">self</span>.imageView</div></pre></td></tr></table></figure>
-<p>之后并不能达到想要的效果。整张图片frame都随着tableview的拖动而改变。并不是像是固定在那里。tableview的顶部会出现大部分空白。然后我仔细看了一遍源码。发现做法是</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.tableView insertSubview:imageView atIndex:<span class="number">0</span>];</div></pre></td></tr></table></figure>
-<p>接着把一个透明view填充到tableview的header view中。   </p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *headerView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>)];    </div><div class="line">headerView.backgroundColor = [<span class="built_in">UIColor</span> clearColor];    </div><div class="line"><span class="keyword">self</span>.tableView.tableHeaderView = headerView;</div></pre></td></tr></table></figure>
-<p>找到这一技巧之后。自己写了一个稍微简单的demo。</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"header"</span>]];</div><div class="line">imageView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.view.frame.size.width, imageViewH);</div><div class="line">[<span class="keyword">self</span>.tableView insertSubview:imageView atIndex:<span class="number">0</span>];</div><div class="line"><span class="keyword">self</span>.imageView = imageView;</div><div class="line"></div><div class="line"><span class="built_in">UIView</span> *headerView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, imageViewH)];</div><div class="line">headerView.backgroundColor = [<span class="built_in">UIColor</span> clearColor];</div><div class="line"><span class="keyword">self</span>.tableView.tableHeaderView = headerView;</div></pre></td></tr></table></figure>
-<p>在</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView</div></pre></td></tr></table></figure>
-<p>方法中这么写:</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CGFloat</span> offsetY = scrollView.contentOffset.y;</div><div class="line">  <span class="keyword">if</span> (offsetY &lt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">self</span>.imageView.frame = <span class="built_in">CGRectMake</span>(offsetY, offsetY, scrollView.bounds.size.width - offsetY * <span class="number">2</span>, imageViewH - offsetY);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">self</span>.imageView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, scrollView.bounds.size.width, imageViewH);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>原理一模一样,拿到scrollview的偏移量计算下拉imageview的frame,使其imageview的宽高增大。上拉的时候恢复原来的frame。</p>
-<h1 id="另一种方法"><a href="#另一种方法" class="headerlink" title="另一种方法"></a>另一种方法</h1><p>还是在</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView</div></pre></td></tr></table></figure>
-<p>方法中拿到scrollview的偏移量计算缩放系数</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CGFloat</span> offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;</div><div class="line"><span class="built_in">CGFloat</span> scale = <span class="number">1.0</span>;</div><div class="line"><span class="keyword">if</span> (offsetY &lt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//向下拉</span></div><div class="line">    scale = MIN(<span class="number">2.5</span>, <span class="number">1</span> - offsetY / imageViewH);</div><div class="line">    <span class="keyword">self</span>.imageView.transform = <span class="built_in">CGAffineTransformMakeScale</span>(scale, scale);</div><div class="line">    <span class="built_in">CGRect</span> frame = <span class="keyword">self</span>.imageView.frame;</div><div class="line">    frame.origin.y = offsetY;</div><div class="line">    <span class="keyword">self</span>.imageView.frame = frame;</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(offsetY &gt; <span class="number">0</span>)</div><div class="line">&#123;</div><div class="line">    <span class="comment">//向上拉</span></div><div class="line">    <span class="built_in">CGRect</span> frame = <span class="keyword">self</span>.imageView.frame;</div><div class="line">    frame.origin.y = -offsetY/imageViewH;</div><div class="line">    <span class="keyword">self</span>.imageView.frame = frame;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>再向上拉的过程中要保证imageview不会进行缩放，只是改变下imageview的y轴的值。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>感谢<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学提供的思路。demo地址:<a href="https://github.com/sunshineLixun/tableViewHeaderScale" target="_blank" rel="external">戳我</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1625,7 +1628,7 @@ main</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1633,7 +1636,7 @@ main</code></p>
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1642,7 +1645,7 @@ main</code></p>
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

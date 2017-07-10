@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,36 +84,15 @@
 
 
 
-<meta name="description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
-<meta property="og:type" content="article">
-<meta property="og:title" content="多种方法使tableView的Header下拉放大">
-<meta property="og:url" content="http://yoursite.com/2016/09/20/多种方法使tableView的Header下拉放大/index.html">
+<meta name="description" content="做一个有文艺气息的程序猿">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sunshine">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Sunshine">
-<meta property="og:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2017-02-13T07:15:30.000Z">
+<meta property="og:description" content="做一个有文艺气息的程序猿">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多种方法使tableView的Header下拉放大">
-<meta name="twitter:description" content="前言看了峥吖同学的这篇文章【一行代码快速集成tableView头部缩放视图】之后 。想着自己用其他的方法来实现这一效果，于是乎想到
-1CGAffineTransformMakeScale
-这一方法。
-效果图
-开始实现在自己写的过程中发现了一些问题, 直接把
-1self.tableView.tableHeaderView = self.imageView
-之后并不能达到想要的效果。整张图片frame">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="Sunshine">
+<meta name="twitter:description" content="做一个有文艺气息的程序猿">
 
 
 
@@ -134,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/20/多种方法使tableView的Header下拉放大/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
-  <title> 多种方法使tableView的Header下拉放大 | Sunshine </title>
+  <title> Sunshine </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +136,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +235,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -276,7 +257,10 @@
             
             
               
-                多种方法使tableView的Header下拉放大
+                
+                <a class="post-title-link" href="/2016/09/20/多种方法使tableView的Header下拉放大/" itemprop="url">
+                  多种方法使tableView的Header下拉放大
+                </a>
               
             
           </h1>
@@ -335,7 +319,9 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学的这篇文章<a href="http://www.jianshu.com/p/859e3ef76b05" target="_blank" rel="external">【一行代码快速集成tableView头部缩放视图】</a>之后 。想着自己用其他的方法来实现这一效果，于是乎想到</p>
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学的这篇文章<a href="http://www.jianshu.com/p/859e3ef76b05" target="_blank" rel="external">【一行代码快速集成tableView头部缩放视图】</a>之后 。想着自己用其他的方法来实现这一效果，于是乎想到</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CGAffineTransformMakeScale</div></pre></td></tr></table></figure>
 <p>这一方法。</p>
 <h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="http://upload-images.jianshu.io/upload_images/1421047-f9cf98990ebda6b2.gif?imageMogr2/auto-orient/strip" alt="下拉放大.gif"></p>
@@ -359,59 +345,40 @@
 <p>再向上拉的过程中要保证imageview不会进行缩放，只是改变下imageview的y轴的值。</p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>感谢<a href="http://www.jianshu.com/users/b09c3959ab3b/latest_articles" target="_blank" rel="external">峥吖</a>同学提供的思路。demo地址:<a href="https://github.com/sunshineLixun/tableViewHeaderScale" target="_blank" rel="external">戳我</a></p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/20/Swift基础/" rel="prev" title="Swift基础">
-                Swift基础 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -419,10 +386,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -442,17 +405,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -513,17 +467,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始实现"><span class="nav-number">3.</span> <span class="nav-text">开始实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#另一种方法"><span class="nav-number">4.</span> <span class="nav-text">另一种方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -620,10 +563,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
