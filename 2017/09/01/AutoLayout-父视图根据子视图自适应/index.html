@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比如这样的: 
+
+
+当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
+1234567891011121314151617- (CGFloat)cellHeigh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoLayout - 父视图根据子视图布局自适应大小">
+<meta property="og:url" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比如这样的: 
+
+
+当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
+1234567891011121314151617- (CGFloat)cellHeigh">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Desktop/无人机销售/销售APP改版效果图/02-首页.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Desktop/无人机销售/销售APP改版效果图/06-预约-已取消-展开.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.10.54.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.13.23.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.27.41.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.28.55.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.32.40.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.33.49.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.47.40.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.51.05.png">
+<meta property="og:image" content="http://yoursite.com/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.51.47.png">
+<meta property="og:updated_time" content="2017-09-04T09:05:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoLayout - 父视图根据子视图布局自适应大小">
+<meta name="twitter:description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比如这样的: 
+
+
+当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
+1234567891011121314151617- (CGFloat)cellHeigh">
+<meta name="twitter:image" content="http://yoursite.com/Users/lixun/Desktop/无人机销售/销售APP改版效果图/02-首页.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/"/>
+
+  <title> AutoLayout - 父视图根据子视图布局自适应大小 | Sunshine </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sunshine</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">lx的个人博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AutoLayout - 父视图根据子视图布局自适应大小
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-01T15:54:00+08:00" content="2017-09-01">
+              2017-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比如这样的: </p>
+<p><img src="/Users/lixun/Desktop/无人机销售/销售APP改版效果图/02-首页.png" alt=""></p>
+<p><img src="/Users/lixun/Desktop/无人机销售/销售APP改版效果图/06-预约-已取消-展开.png" alt=""></p>
+<p>当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)cellHeight&#123;</div><div class="line">	<span class="built_in">CGFloat</span> publicHeight = kViewTopPadding + kImageSize().height + kViewTypeMargin + _nameStrSize.height + kViewTypePadding + _nameTextSize.height + kViewTypeMargin / <span class="number">2</span> + kCellBottomPadding;</div><div class="line">	<span class="keyword">switch</span> (_layoutViewType) &#123;</div><div class="line">		<span class="keyword">case</span> ViewLayoutBreviaryType:</div><div class="line">			<span class="keyword">return</span> publicHeight;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> ViewLayoutDetailType:</div><div class="line">			<span class="comment">//判断当前model存储的信息是待执行还是已取消状态</span></div><div class="line">			<span class="keyword">if</span> (_orderModel.reserveType == YWBOrderReservationToBeConfirm) &#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _typeStrSize.height + _typeTextSize.height + kViewTypeMargin + kButtonHeight + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(_orderModel.reserveType == YWBOrderReservationCancledForSaler || _orderModel.reserveType == YWBOrderReservationCancledForClient)&#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _cancleStrSize.height + kViewTypePadding + _cancleTextSize.height + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;</div><div class="line">		   <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0.0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)heightWithWidth:(<span class="built_in">CGFloat</span>)width font:(<span class="built_in">UIFont</span> *)font</div><div class="line">&#123;</div><div class="line">	<span class="built_in">CGRect</span> attrsRect = [<span class="keyword">self</span> boundingRectWithSize:<span class="built_in">CGSizeMake</span>(width, <span class="built_in">CGFLOAT_MAX</span>)</div><div class="line">										  options:<span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> | <span class="built_in">NSStringDrawingUsesFontLeading</span></div><div class="line">									   attributes:@&#123;<span class="built_in">NSFontAttributeName</span> : font&#125;</div><div class="line">										  context:<span class="literal">nil</span>];</div><div class="line">	<span class="keyword">return</span> attrsRect.size.height;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果不细心漏掉某一处高度,查找起来也比较麻烦。每次算高度是我不爱干的一件事情。没有技术含量😂。完全就是细心活。多亏AutoLayout能让我们从这一毫无兴趣的工作中解放出来。</p>
+<h1 id="父视图自适应"><a href="#父视图自适应" class="headerlink" title="父视图自适应"></a>父视图自适应</h1><p>新建Xcode工程。在Main.storyboard的ViewController中随意拖入view控件，颜色暂定为blue。放置3个Label控件。</p>
+<p><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.10.54.png" alt=""></p>
+<ol>
+<li>先不设置blueview的约束。</li>
+<li>逐步设置Label的约束。</li>
+</ol>
+<p>黑色Label约束如下:<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.13.23.png" alt=""></p>
+<p>在这里我设置了黑色Label的size。这个并无关系，可设可不设。使用Label的固有大小也行。</p>
+<p>黄色Label约束如下:<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.27.41.png" alt=""></p>
+<p>红色Label约束如下:<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.28.55.png" alt=""></p>
+<p>Label的行数都为0。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p><strong><em>Label一定要设置距离父视图的间距。这样AutoLayout才能计算出父视图的大小。</em></strong></p>
+<h1 id="最重要的一步"><a href="#最重要的一步" class="headerlink" title="最重要的一步"></a>最重要的一步</h1><p>看下view的约束<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.32.40.png" alt=""><br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.33.49.png" alt=""><br>将view的固有尺寸设置为placeholder。 我们都知道Label Button ImageView(已经设置image属性)这些控件，在用AutoLayout布局时，只需要设置外边距就行了。AutoLayout会自动适应size大小。这就是固有尺寸。反观View就不行了。假如只设置View的外边距，这时一定会报出约束错误。但是View作为容器。它能根据子控件的大小来自适应。只需要将其固有尺寸(size)都设置为0。</p>
+<p>这是对于高度不固定的来讲。如果宽度不固定呢？答案是同样适用，一般来说，view的宽度是固定的。高度不固定。</p>
+<h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><p>如果不设置view的左右边间距或者宽度你就会发现变成了这样:<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.47.40.png" alt=""><br>view的左右边距已经被Label撑到屏幕外面了。因为这时view的宽度也是会随着Label变化的。<br>所以说我设置了view的左右边距(或者设置其固定的宽度)</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>接来下就可以设置Label的text属性了。随便输入汉字来验证一下：<br><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.51.05.png" alt=""></p>
+<p><img src="/Users/lixun/Documents/博客资源文件/屏幕快照 2017-09-04 下午4.51.47.png" alt=""></p>
+<p>可以发现view的高度已经随着Label的变化而变化了。其他的空间以此类推。都是一样的道理。另外纯代码布局也同样适用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>view作为容器类其承载其他控件的显示。只要设置了子控件的距离自己的约束。并将自己的固有尺寸设置为placeholder(也就是width和height都为0)。这样AutoLayout就能自动计算出view的大小。</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>怎么样拿到view的大小呢？系统为我们提供了这样的API</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIView</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/* The size fitting most closely to targetSize in which the receiver's subtree can be laid out while optimally satisfying the constraints. If you want the smallest possible size, pass UILayoutFittingCompressedSize; for the largest possible size, pass UILayoutFittingExpandedSize.</span></div><div class="line">     Also see the comment for UILayoutPriorityFittingSizeLevel.</div><div class="line">     */</div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">6.0</span>, *)</div><div class="line">    open <span class="function"><span class="keyword">func</span> <span class="title">systemLayoutSizeFitting</span><span class="params">(<span class="number">_</span> targetSize: CGSize)</span></span> -&gt; <span class="type">CGSize</span> <span class="comment">// Equivalent to sending -systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: with UILayoutPriorityFittingSizeLevel for both priorities.</span></div><div class="line"></div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">8.0</span>, *)</div><div class="line">    open <span class="function"><span class="keyword">func</span> <span class="title">systemLayoutSizeFitting</span><span class="params">(<span class="number">_</span> targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority)</span></span> -&gt; <span class="type">CGSize</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在viewDidLayoutSubviews或者layoutSubviews中通过调用上面API就能够获得通过AutoLayout计算过后view的大小。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/10/React-Native-自定义组件/" rel="next" title="React-Native 自定义组件">
+                <i class="fa fa-chevron-left"></i> React-Native 自定义组件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Sunshine" />
+          <p class="site-author-name" itemprop="name">Sunshine</p>
+          <p class="site-description motion-element" itemprop="description">做一个有文艺气息的程序猿</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLixun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#父视图自适应"><span class="nav-number">2.</span> <span class="nav-text">父视图自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重点"><span class="nav-number">2.1.</span> <span class="nav-text">重点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最重要的一步"><span class="nav-number">3.</span> <span class="nav-text">最重要的一步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要注意的问题"><span class="nav-number">3.1.</span> <span class="nav-text">需要注意的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">3.2.</span> <span class="nav-text">验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sunshine</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
