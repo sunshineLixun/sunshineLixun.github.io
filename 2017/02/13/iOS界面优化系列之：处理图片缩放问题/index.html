@@ -85,32 +85,39 @@
 
 
 <meta name="description" content="在众多阅读类的APP中，比如:
+        
+
 这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。
-像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  Kingfisher  PI">
+像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  King">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS界面优化系列之：处理图片缩放问题">
 <meta property="og:url" content="http://yoursite.com/2017/02/13/iOS界面优化系列之：处理图片缩放问题/index.html">
 <meta property="og:site_name" content="Sunshine">
 <meta property="og:description" content="在众多阅读类的APP中，比如:
+        
+
 这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。
-像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  Kingfisher  PI">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  King">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-66c55b53453df8db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-0556297eefe06581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-758e84ae67a3697e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-7663f55e36043484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-2c7369df156405e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-833bed416800300a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-05-04T15:04:15.000Z">
+<meta property="og:updated_time" content="2017-09-05T06:43:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS界面优化系列之：处理图片缩放问题">
 <meta name="twitter:description" content="在众多阅读类的APP中，比如:
+        
+
 这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。
-像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  Kingfisher  PI">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  King">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
 
 
 
@@ -332,12 +339,12 @@
       
 
       
-        <p>在众多阅读类的APP中，比如:<br><img src="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="
-![IMG_0782.PNG](http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-"></p>
+        <p>在众多阅读类的APP中，比如:</p>
+<figure class="half"><br>    <img src="http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568"><br>    <img src="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568"><br></figure>
+
 <p>这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。</p>
 <p>像这种异步加载图片的开源库有很多：<code>SD_WebImageView</code>  <code>YYWebImage  Kingfisher</code>  <code>PINRemoteImage</code> …<br>开发者如果只是简单的调用一下 <code>sd_setImageWithURL:</code> 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageView的尺寸不一致,就会导致这种结果。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-131912.png"><br>如果是真机调试 打开<code>Instruments</code>中<code>Core Animation</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-66c55b53453df8db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135233.png"><br>在右侧栏中打开<br><img src="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135327.png"><br>如果是模拟器，打开Debug -&gt;Color Misaligned Images</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-131912.png"><br>如果是真机调试 打开<code>Instruments</code>中<code>Core Animation</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-66c55b53453df8db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-135233.png"><br>在右侧栏中打开<br><img src="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-135327.png"><br>如果是模拟器，打开Debug -&gt;Color Misaligned Images</p>
 <p>这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。**黄色、紫色越多，性能越差。</p>
 <p>解决办法：<br>1.与后台协商，让后台返回的图片尺寸与客户端UIImageView尺寸一致;<br>2.自己处理。</p>
 <p>下面介绍下如何自己处理</p>
@@ -345,7 +352,7 @@
 <p>很简单就是网络下载下来的图片按照自己设置的UIImageView的尺寸来重新draw一个。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setImage</span>&lt;T: UIImageView&gt;<span class="params">(<span class="number">_</span> imageView: T, URLString: String, targetSize: CGSize)</span></span>&#123;</div><div class="line">        imageView.pin_setImage(from: <span class="type">URL</span>.<span class="keyword">init</span>(string: <span class="type">URLString</span>), completion: &#123;(<span class="type">PINRemoteImageManagerResult</span>) <span class="keyword">in</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> image = <span class="type">PINRemoteImageManagerResult</span>.image&#123;</div><div class="line">                    imageView.image = image.resizeImage(image, targetSize: targetSize)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>重新给UIImageView设置image属性</p>
-<p>重新打开Color Misaligned Images功能来检测一下<br><img src="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-140353.png"></p>
+<p>重新打开Color Misaligned Images功能来检测一下<br><img src="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-140353.png"></p>
 <p>嗯！ 不错哦，之前的黄色没有了。 本以为就达到了的要求。</p>
 <p>但是用<code>Instruments</code>中<code>Time Profiler</code><br><img src="http://upload-images.jianshu.io/upload_images/1421047-0556297eefe06581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-140732.png"><br>来检测下处理该函数所需要的时间</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1421047-758e84ae67a3697e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-141255.png"></p>
