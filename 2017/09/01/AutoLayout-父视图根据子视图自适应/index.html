@@ -87,9 +87,8 @@
 <meta name="description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比
 如这样的: 
 
-
 当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
-1234567891011121314151617- (CGFloat)cellHeig">
+1234567891011121314151617- (CGFloat)cellHeigh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AutoLayout - 父视图根据子视图布局自适应大小">
 <meta property="og:url" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/index.html">
@@ -97,12 +96,10 @@
 <meta property="og:description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比
 如这样的: 
 
-
 当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
-1234567891011121314151617- (CGFloat)cellHeig">
-<meta property="og:image" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/xxxx/图片名.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/1.png">
+1234567891011121314151617- (CGFloat)cellHeigh">
+<meta property="og:image" content="http://yoursite.com/images/1.png">
+<meta property="og:image" content="http://yoursite.com/AutoLayout-父视图根据子视图自适应/1.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-c822fe25e461f77e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-3d11bb6ca27fb675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-d13f82f73fd35039.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -111,16 +108,15 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-d5e451567f22d607.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-ec22a6eb4f798608.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-9e35bd06022a8ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-01T06:46:24.500Z">
+<meta property="og:updated_time" content="2018-03-01T07:29:02.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoLayout - 父视图根据子视图布局自适应大小">
 <meta name="twitter:description" content="前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比
 如这样的: 
 
-
 当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &amp;gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
-1234567891011121314151617- (CGFloat)cellHeig">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/01/AutoLayout-父视图根据子视图自适应/1.png">
+1234567891011121314151617- (CGFloat)cellHeigh">
+<meta name="twitter:image" content="http://yoursite.com/images/1.png">
 
 
 
@@ -344,14 +340,13 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比</p>
 <p>如这样的: </p>
-<p><img src="/2017/09/01/AutoLayout-父视图根据子视图自适应/1.png" alt=""></p>
-<p><img src="/2017/09/01/AutoLayout-父视图根据子视图自适应/xxxx/图片名.jpg" alt=""></p>
+<p><img src="/images/1.png" width="50%" height="50%" align="center/"></p>
 <p>当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)cellHeight&#123;</div><div class="line">	<span class="built_in">CGFloat</span> publicHeight = kViewTopPadding + kImageSize().height + kViewTypeMargin + _nameStrSize.height + kViewTypePadding + _nameTextSize.height + kViewTypeMargin / <span class="number">2</span> + kCellBottomPadding;</div><div class="line">	<span class="keyword">switch</span> (_layoutViewType) &#123;</div><div class="line">		<span class="keyword">case</span> ViewLayoutBreviaryType:</div><div class="line">			<span class="keyword">return</span> publicHeight;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> ViewLayoutDetailType:</div><div class="line">			<span class="comment">//判断当前model存储的信息是待执行还是已取消状态</span></div><div class="line">			<span class="keyword">if</span> (_orderModel.reserveType == YWBOrderReservationToBeConfirm) &#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _typeStrSize.height + _typeTextSize.height + kViewTypeMargin + kButtonHeight + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(_orderModel.reserveType == YWBOrderReservationCancledForSaler || _orderModel.reserveType == YWBOrderReservationCancledForClient)&#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _cancleStrSize.height + kViewTypePadding + _cancleTextSize.height + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;</div><div class="line">		   <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0.0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)heightWithWidth:(<span class="built_in">CGFloat</span>)width font:(<span class="built_in">UIFont</span> *)font</div><div class="line">&#123;</div><div class="line">	<span class="built_in">CGRect</span> attrsRect = [<span class="keyword">self</span> boundingRectWithSize:<span class="built_in">CGSizeMake</span>(width, <span class="built_in">CGFLOAT_MAX</span>)</div><div class="line">										  options:<span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> | <span class="built_in">NSStringDrawingUsesFontLeading</span></div><div class="line">									   attributes:@&#123;<span class="built_in">NSFontAttributeName</span> : font&#125;</div><div class="line">										  context:<span class="literal">nil</span>];</div><div class="line">	<span class="keyword">return</span> attrsRect.size.height;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果不细心漏掉某一处高度,查找起来也比较麻烦。每次算高度是我不爱干的一件事情。没有技术含量😂。完全就是细心活。多亏AutoLayout能让我们从这一毫无兴趣的工作中解放出来。</p>
 <h1 id="父视图自适应"><a href="#父视图自适应" class="headerlink" title="父视图自适应"></a>父视图自适应</h1><p>新建Xcode工程。在Main.storyboard的ViewController中随意拖入view控件，颜色暂定为blue。放置3个Label控件。</p>
-<p><img src="/2017/09/01/AutoLayout-父视图根据子视图自适应/1.png" alt=""></p>
+<p><img src="AutoLayout-父视图根据子视图自适应/1.png" alt=""></p>
 <ol>
 <li>先不设置blueview的约束。</li>
 <li>逐步设置Label的约束。</li>
