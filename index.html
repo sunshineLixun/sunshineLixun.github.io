@@ -1,1022 +1,1833 @@
-<!DOCTYPE html>
-<html>
-    <!-- title -->
+<!doctype html>
 
 
 
-
-
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>Hello Li</title>
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
-    }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7);
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s 1;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-</style>
-
-    <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
-        
-    <link rel="icon" href= /uploads/avatar.png>
-    <script>
-  // load webfont-loader async, and add callback function
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
   
-  // get user agent
-  var browser = {
-    versions: function () {
-      var u = window.navigator.userAgent;
-      return {
-        userAgent: u,
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-        iPad: u.indexOf('iPad') > -1, //是否为iPad
-        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-      };
-    }()
-  }
-  console.log("userAgent:" + browser.versions.userAgent);
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded');
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
-        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
-      if (postIntroTags) {
-        postIntroTags.classList.add('post-fade-in');
-      }
-      if (postIntroMeat) {
-        postIntroMeat.classList.add('post-fade-in');
-      }
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="做一个有文艺气息的程序猿">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sunshine">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="做一个有文艺气息的程序猿">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sunshine">
+<meta name="twitter:description" content="做一个有文艺气息的程序猿">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
     }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb(){
-    if (browser.versions.uc) {
-      console.log("UCBrowser");
-      fontLoaded();
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular']
-        },
-        loading: function () {  //所有字体开始加载
-          // console.log('loading');
-        },
-        active: function () {  //所有字体已渲染
-          fontLoaded();
-        },
-        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout');
-          fontLoaded();
-        },
-        timeout: 5000 // Set the timeout to two seconds
-      });
-    }
-  }
-
-  async("https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", asyncCb)
+  };
 </script>
-    <script>
-        (function (w) {
-            "use strict";
-            // rel=preload support test
-            if (!w.loadCSS) {
-                w.loadCSS = function () { };
-            }
-            // define on the loadCSS obj
-            var rp = loadCSS.relpreload = {};
-            // rel=preload feature support test
-            // runs once and returns a function for compat purposes
-            rp.support = (function () {
-                var ret;
-                try {
-                    ret = w.document.createElement("link").relList.supports("preload");
-                } catch (e) {
-                    ret = false;
-                }
-                return function () {
-                    return ret;
-                };
-            })();
 
-            // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-            // then change that media back to its intended value on load
-            rp.bindMediaToggle = function (link) {
-                // remember existing media attr for ultimate state, or default to 'all'
-                var finalMedia = link.media || "all";
 
-                function enableStylesheet() {
-                    link.media = finalMedia;
-                }
 
-                // bind load handlers to enable media
-                if (link.addEventListener) {
-                    link.addEventListener("load", enableStylesheet);
-                } else if (link.attachEvent) {
-                    link.attachEvent("onload", enableStylesheet);
-                }
 
-                // Set rel and non-applicable media type to start an async request
-                // note: timeout allows this to happen async to let rendering continue in IE
-                setTimeout(function () {
-                    link.rel = "stylesheet";
-                    link.media = "only x";
-                });
-                // also enable media after 3 seconds,
-                // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-                setTimeout(enableStylesheet, 3000);
-            };
+  <link rel="canonical" href="http://yoursite.com/"/>
 
-            // loop through link elements in DOM
-            rp.poly = function () {
-                // double check this to prevent external calls from running
-                if (rp.support()) {
-                    return;
-                }
-                var links = w.document.getElementsByTagName("link");
-                for (var i = 0; i < links.length; i++) {
-                    var link = links[i];
-                    // qualify links to those with rel=preload and as=style attrs
-                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) {
-                        // prevent rerunning on link
-                        link.setAttribute("data-loadcss", true);
-                        // bind listeners to toggle media back
-                        rp.bindMediaToggle(link);
-                    }
-                }
-            };
-
-            // if unsupported, run the polyfill
-            if (!rp.support()) {
-                // run once at least
-                rp.poly();
-
-                // rerun poly on an interval until onload
-                var run = w.setInterval(rp.poly, 500);
-                if (w.addEventListener) {
-                    w.addEventListener("load", function () {
-                        rp.poly();
-                        w.clearInterval(run);
-                    });
-                } else if (w.attachEvent) {
-                    w.attachEvent("onload", function () {
-                        rp.poly();
-                        w.clearInterval(run);
-                    });
-                }
-            }
-            // commonjs
-            if (typeof exports !== "undefined") {
-                exports.loadCSS = loadCSS;
-            }
-            else {
-                w.loadCSS = loadCSS;
-            }
-        }(typeof global !== "undefined" ? global : this));
-    </script>
-    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
-    <script src="/scripts/main.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
-    <!-- 百度统计  -->
-    
-    <!-- 谷歌统计  -->
-    
+  <title> Sunshine </title>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
     
-        <body class="home-body">
-    
-    
-<header class="header index-header">
+  
 
-    <div class="read-progress"></div>
-    <div class="header-sidebar-menu">&#xe775;</div>
-    <!-- post页的toggle banner  -->
-    
-    <a class="home-link" href=/>Hello Li</a>
-</header>
-    <div class="wrapper">
-        <div class="site-intro" style=
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
 
-
-
-
-
-
-
-height:50vh;
-
->
-    
-    <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
-            
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-            Hello Li
-            <!-- 文章页  -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-            
-                lx的个人博客
-            
-            <!-- 文章页  -->
-            
-        </p>
-        <!-- 文章页meta -->
-        
-    </div>
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sunshine</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">lx的个人博客</p>
 </div>
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
 
-        <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2017/09/01/AutoLayout-父视图根据子视图自适应/" >
-                
-                    <span>AutoLayout - 父视图根据子视图布局自适应大小</span>
-            </a>
-            <div class="abstract-content">
-                前言本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比
-如这样的: 
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
 
-当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。
-1234567891011121314151617- (CGFloat)cellHeight&#123;	CGFloat publicHeight = kViewTopPadding + kImageSize().height + kViewTypeMargin + _nameStr...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/09/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2017/07/10/React-Native-自定义组件/" >
-                
-                    <span>React Native 自定义组件</span>
-            </a>
-            <div class="abstract-content">
-                方法一：自定义组件(Button)代码：
-12345678910111213export default class Button extends Component&#123;    render()&#123;        //解构        const &#123;title,onClick&#125; = this.props;        return(            &lt;TouchableOpacity style=&#123;styles.touchStyle&#125;                              onPress=&#12...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/07/10</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "React Native">React Native</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2017/07/06/记一次React-Native-StackNavigator使用小结/" >
-                
-                    <span>记一次React Native的StackNavigator使用小结</span>
-            </a>
-            <div class="abstract-content">
-                初始化1234export default (  routeConfigMap: NavigationRouteConfigMap,  stackConfig: StackNavigatorConfig = &#123;&#125;)
-在StackNavigator的初始化中需要传入两个参数：routeConfigMap 表示路由配置参数, stackConfig表示配置StackNavigatorConfig一些样式或者属性。
-123456789101112const MainSrceenStackNavigator = StackNavigator(    &#123;       ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/07/06</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "React Native">React Native</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2017/02/13/iOS界面优化系列之：处理图片缩放问题/" >
-                
-                    <span>iOS界面优化系列之：处理图片缩放问题</span>
-            </a>
-            <div class="abstract-content">
-                在众多阅读类的APP中，比如:
-        
+<nav class="site-nav">
+  
 
-这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。
-像这种异步加载图片的开源库有很多：SD_WebImageView  YYWebImage  Kingfisher  PINRemoteImage …开发者如果只是简单的调用一下 sd_setImageWithURL: 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageVie...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/02/13</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/12/08/dispatch-semaphore-t-信号量/" >
-                
-                    <span>dispatch_semaphore_t 信号量</span>
-            </a>
-            <div class="abstract-content">
-                dispatch_semaphore_createdispatch_semaphore_create(long value) 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0
-The starting value for the semaphore. Passing a value less than zero will cause NULL to be returned.
-则返回为NULL
-dispatch_semaphore_wait该函数会使传入的信号量减1,当信号量有 &gt;= 1时,就会继续往下执行...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/12/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/10/14/cocoapods升级1.1.0/" >
-                
-                    <span>cocoapods 更新到最新版本(1.1.0)</span>
-            </a>
-            <div class="abstract-content">
-                在Apple 发布swift3.0之后 一大部分著名的第三方开源库,比如Alamofire,snapKit 之后都陆续更新到swift3.0。当我们用cocoapods管理它们或者使用它们的时候都会看到这样一句话:
-1CocoaPods 1.1.0+ is required to build Alamofire 4.0.0+.
-1CocoaPods 1.1.0+ is required to build SnapKit 3.0.0+.
-需要将cocoapods更新到1.1.0版本以上
-1gem install cocoapods --pre //升级到最新版本
-但是会遇到权限问题
-1ER...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/10/14</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "其他">其他</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/10/10/iOS开发小技巧(一)/" >
-                
-                    <span>iOS开发小技巧(一)</span>
-            </a>
-            <div class="abstract-content">
-                改变UIImagePickerController的导航条以及title的颜色12345678910- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated&#123;   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent; ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/10/10</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/10/09/load VS initialize/" >
-                
-                    <span>load VS initialize</span>
-            </a>
-            <div class="abstract-content">
-                共同点方法只会被调用一次(相对于runtime而言)
-区别load方法声明一个SuperClass类继承与NSObject 
-1234@implementation SuperClass+ (void) load &#123;  NSLog(@"加载load方法"); &#125;
-1234567int main(int argc, char * argv[]) &#123;	@autoreleasepool &#123;		NSLog(@"main");	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([A...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/10/09</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/09/24/3D - Touch之Peek & Pop/" >
-                
-                    <span>3D - Touch（二）之Peek &amp; Pop</span>
-            </a>
-            <div class="abstract-content">
-                前言在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。
-实现创建视图(sourceView)首先用tableview来做例子。用storyboard创建表,在这里就不赘述了。
-1var titleArray = ["3D-Touch Objective-C","3D-Touch Swift","前言快报:Swift终将超越OC,进而取代OC","Github9月编程语言 JS 跃居第一位"]
-创建一个数组来做tableview的数据源。
-实现代理在实现...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/09/24</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2016/09/23/3D-Touch 桌面/" >
-                
-                    <span>3D - Touch(一) 桌面</span>
-            </a>
-            <div class="abstract-content">
-                桌面3D - Touch快捷静态操作（Quick actions）需要在 info.plist中配置
-123456789101112131415161718192021222324252627&lt;key&gt;UIApplicationShortcutItems&lt;/key&gt;&lt;array&gt;	&lt;dict&gt;		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;		&...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/09/23</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
-    
-</main>
-            <!-- profile -->
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-            <div class="profile">
-    <img class="profile-avatar" src= /uploads/avatar.png >
-    <div class="profile-name">Hello Li</div>
-    
-    <div class="profile-signature">
-        lx的个人博客
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-                <a href="mailto:1261142605@qq.com" class="iconfont-archer email" title=email ></a>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
             
-        
-    
-        
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-                <a href="https://github.com/sunshineLixun" class="iconfont-archer github" target="_blank" title=github></a>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
             
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
         
-    
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
 
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
-            
-        </div>
-        <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-    <div class="social">
-        
-    
-        
-            
-                <a href="mailto:1261142605@qq.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="https://github.com/sunshineLixun" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- 不蒜子  -->
-    
-    <div class="busuanzi-container">
-        <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span>
-        </span>
-    </div>
-    
-</footer>
-    </div>
-    <!-- toc -->
-    
-    <div class="back-top iconfont-archer">&#xe639;</div>
-    <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+      
     </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-panel-archives">
-    <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-archive"> Total : 12 </div>
-    
-    <div class="post-archive">
-    
-    
-    
-    
-    <div class="archive-year"> 2017 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2017/09/01/AutoLayout-父视图根据子视图自适应/" >AutoLayout - 父视图根据子视图布局自适应大小</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2017/07/10/React-Native-自定义组件/" >React Native 自定义组件</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2017/07/06/记一次React-Native-StackNavigator使用小结/" >记一次React Native的StackNavigator使用小结</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2017/02/13/iOS界面优化系列之：处理图片缩放问题/" >iOS界面优化系列之：处理图片缩放问题</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2016 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2016/12/08/dispatch-semaphore-t-信号量/" >dispatch_semaphore_t 信号量</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/14</span><a class="archive-post-title" href= "/2016/10/14/cocoapods升级1.1.0/" >cocoapods 更新到最新版本(1.1.0)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/2016/10/10/iOS开发小技巧(一)/" >iOS开发小技巧(一)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2016/10/09/load VS initialize/" >load VS initialize</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/24</span><a class="archive-post-title" href= "/2016/09/24/3D - Touch之Peek & Pop/" >3D - Touch（二）之Peek & Pop</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2016/09/23/3D-Touch 桌面/" >3D - Touch(一) 桌面</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/20</span><a class="archive-post-title" href= "/2016/09/20/多种方法使tableView的Header下拉放大/" >多种方法使tableView的Header下拉放大</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/20</span><a class="archive-post-title" href= "/2016/09/20/Swift基础/" >Swift基础</a>
-        </li>
-    
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/01/AutoLayout-父视图根据子视图自适应/" itemprop="url">
+                  AutoLayout - 父视图根据子视图布局自适应大小
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-01T15:54:00+08:00" content="2017-09-01">
+              2017-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文记录AutoLayout日常布局UI时的技巧。每当拿到新的界面设计时,比</p>
+<p>如这样的: </p>
+<p><img src="/images/1.png" width="50%" height="50%" align="center/"></p>
+<p>当某个字段的长度不确定时,(图1中的“作业地址”,图2中”预约地址”和“取消原因”)。Label的行数就要设置为0或者 &gt;=1。总试图的高度就不确定。于是乎就要开始就算containerView的高度了。</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)cellHeight&#123;</div><div class="line">	<span class="built_in">CGFloat</span> publicHeight = kViewTopPadding + kImageSize().height + kViewTypeMargin + _nameStrSize.height + kViewTypePadding + _nameTextSize.height + kViewTypeMargin / <span class="number">2</span> + kCellBottomPadding;</div><div class="line">	<span class="keyword">switch</span> (_layoutViewType) &#123;</div><div class="line">		<span class="keyword">case</span> ViewLayoutBreviaryType:</div><div class="line">			<span class="keyword">return</span> publicHeight;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> ViewLayoutDetailType:</div><div class="line">			<span class="comment">//判断当前model存储的信息是待执行还是已取消状态</span></div><div class="line">			<span class="keyword">if</span> (_orderModel.reserveType == YWBOrderReservationToBeConfirm) &#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _typeStrSize.height + _typeTextSize.height + kViewTypeMargin + kButtonHeight + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(_orderModel.reserveType == YWBOrderReservationCancledForSaler || _orderModel.reserveType == YWBOrderReservationCancledForClient)&#123;</div><div class="line">				<span class="keyword">return</span> publicHeight + kViewTypeMargin / <span class="number">2</span> + _addressStrSize.height + kViewTypePadding + _addressTextSize.height + kViewTypeMargin + _cancleStrSize.height + kViewTypePadding + _cancleTextSize.height + kViewBottomPadding + kCellBottomPadding;</div><div class="line">			&#125;</div><div class="line">		   <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0.0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)heightWithWidth:(<span class="built_in">CGFloat</span>)width font:(<span class="built_in">UIFont</span> *)font</div><div class="line">&#123;</div><div class="line">	<span class="built_in">CGRect</span> attrsRect = [<span class="keyword">self</span> boundingRectWithSize:<span class="built_in">CGSizeMake</span>(width, <span class="built_in">CGFLOAT_MAX</span>)</div><div class="line">										  options:<span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span> | <span class="built_in">NSStringDrawingUsesFontLeading</span></div><div class="line">									   attributes:@&#123;<span class="built_in">NSFontAttributeName</span> : font&#125;</div><div class="line">										  context:<span class="literal">nil</span>];</div><div class="line">	<span class="keyword">return</span> attrsRect.size.height;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果不细心漏掉某一处高度,查找起来也比较麻烦。每次算高度是我不爱干的一件事情。没有技术含量😂。完全就是细心活。多亏AutoLayout能让我们从这一毫无兴趣的工作中解放出来。</p>
+<h1 id="父视图自适应"><a href="#父视图自适应" class="headerlink" title="父视图自适应"></a>父视图自适应</h1><p>新建Xcode工程。在Main.storyboard的ViewController中随意拖入view控件，颜色暂定为blue。放置3个Label控件。</p>
+<p><img src="https://i.loli.net/2018/03/02/5a98ee340eaab.png" alt="1.png"></p>
+<ol>
+<li>先不设置blueview的约束。</li>
+<li>逐步设置Label的约束。</li>
+</ol>
+<p>黑色Label约束如下:</p>
+<p><img src="https://i.loli.net/2018/03/02/5a98ee7ee44ec.png" alt="2.png"></p>
+<p>在这里我设置了黑色Label的size。这个并无关系，可设可不设。使用Label的固有大小也行。</p>
+<p>黄色Label约束如下:</p>
+<p><img src="https://i.loli.net/2018/03/02/5a98eea02e37a.png" alt="3.png"></p>
+<p>红色Label约束如下:</p>
+<p><img src="https://i.loli.net/2018/03/02/5a98eeb892428.png" alt="4.png"></p>
+<p>Label的行数都为0。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p><strong><em>Label一定要设置距离父视图的间距。这样AutoLayout才能计算出父视图的大小。</em></strong></p>
+<h1 id="最重要的一步"><a href="#最重要的一步" class="headerlink" title="最重要的一步"></a>最重要的一步</h1><p>看下view的约束<br><img src="https://i.loli.net/2018/03/02/5a98eed285ff8.png" alt="5.png"><br><img src="https://i.loli.net/2018/03/02/5a98eee554feb.png" alt="6.png"><br>将view的固有尺寸设置为placeholder。 我们都知道Label Button ImageView(已经设置image属性)这些控件，在用AutoLayout布局时，只需要设置外边距就行了。AutoLayout会自动适应size大小。这就是固有尺寸。反观View就不行了。假如只设置View的外边距，这时一定会报出约束错误。但是View作为容器。它能根据子控件的大小来自适应。只需要将其固有尺寸(size)都设置为0。</p>
+<p>这是对于高度不固定的来讲。如果宽度不固定呢？答案是同样适用，一般来说，view的宽度是固定的。高度不固定。</p>
+<h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><p>如果不设置view的左右边间距或者宽度你就会发现变成了这样:<br><img src="https://i.loli.net/2018/03/02/5a98eefb35dd4.png" alt="7.png"><br>view的左右边距已经被Label撑到屏幕外面了。因为这时view的宽度也是会随着Label变化的。<br>所以说我设置了view的左右边距(或者设置其固定的宽度)</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>接来下就可以设置Label的text属性了。随便输入汉字来验证一下：<br><img src="https://i.loli.net/2018/03/02/5a98ef188c27f.png" alt="8.png"><br><img src="https://i.loli.net/2018/03/02/5a98ef188f224.png" alt="9.png"></p>
+<p>可以发现view的高度已经随着Label的变化而变化了。其他的控件以此类推。都是一样的道理。另外纯代码布局也同样适用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>view作为容器类其承载其他控件的显示。只要设置了子控件的距离自己的约束。并将自己的固有尺寸设置为placeholder(也就是width和height都为0)。这样AutoLayout就能自动计算出view的大小。</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>怎么样拿到view的大小呢？系统为我们提供了这样的API</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIView</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/* The size fitting most closely to targetSize in which the receiver's subtree can be laid out while optimally satisfying the constraints. If you want the smallest possible size, pass UILayoutFittingCompressedSize; for the largest possible size, pass UILayoutFittingExpandedSize.</span></div><div class="line">     Also see the comment for UILayoutPriorityFittingSizeLevel.</div><div class="line">     */</div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">6.0</span>, *)</div><div class="line">    open <span class="function"><span class="keyword">func</span> <span class="title">systemLayoutSizeFitting</span><span class="params">(<span class="number">_</span> targetSize: CGSize)</span></span> -&gt; <span class="type">CGSize</span> <span class="comment">// Equivalent to sending -systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: with UILayoutPriorityFittingSizeLevel for both priorities.</span></div><div class="line"></div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">8.0</span>, *)</div><div class="line">    open <span class="function"><span class="keyword">func</span> <span class="title">systemLayoutSizeFitting</span><span class="params">(<span class="number">_</span> targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority)</span></span> -&gt; <span class="type">CGSize</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在viewDidLayoutSubviews或者layoutSubviews中通过调用上面API就能够获得通过AutoLayout计算过后view的大小。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/10/React-Native-自定义组件/" itemprop="url">
+                  React Native 自定义组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-10T16:02:49+08:00" content="2017-07-10">
+              2017-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><p>自定义组件(Button)代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">    render()&#123;</div><div class="line">        <span class="comment">//解构</span></div><div class="line">        <span class="keyword">const</span> &#123;title,onClick&#125; = <span class="keyword">this</span>.props;</div><div class="line">        <span class="keyword">return</span>(</div><div class="line">            &lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;onClick&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;/TouchableOpacity&gt;</div><div class="line">        )</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>export default</code>关键字：导出自定义组件,可以被别的js文件所引用。如果没有关键字,就只能在本js文件使用该类。例如在<code>Login.js</code>文件中可以用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import Button from &apos;./Button&apos;</div></pre></td></tr></table></figure>
+<p>导入Button组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解构</span></div><div class="line"><span class="keyword">const</span> &#123;title,onClick&#125; = <span class="keyword">this</span>.props;</div></pre></td></tr></table></figure>
+<p>解构从父组件的传过来的props, 子组件拿到父组件设置的属性值,显示传递的值或者处理传递过来的方法。</p>
+<p>列如上面代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">///显示Button的title</span></div><div class="line">&lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;<span class="keyword">this</span>.props.title&#125;&gt;</div><div class="line">&lt;/Text&gt;</div><div class="line"></div><div class="line"><span class="comment">///处理TouchableOpacity的点击事件</span></div><div class="line">&lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                  onPress=&#123;onClick&#125;&gt;</div><div class="line">&lt;/TouchableOpacity&gt;</div></pre></td></tr></table></figure>
+<p>父组件调用代码: 传递title信息和onClick方法回调</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;Button title=<span class="string">"登录"</span></div><div class="line">        onClick=&#123;() =&gt; alert(<span class="string">'点击了登录按钮'</span>)&#125;/&gt;</div></pre></td></tr></table></figure>
+<h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>与方法一的区别不大</p>
+<p>代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component,PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Text,TouchableOpacity,StyleSheet &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> propTypes = &#123;</div><div class="line">        title: PropTypes.string,</div><div class="line">        onPress: PropTypes.func</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">return</span>(</div><div class="line">            &lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;()=&gt;&#123;</div><div class="line">                                if (this.props.onPress) &#123;</div><div class="line">                                    this.props.onPress(this)</div><div class="line">                                &#125;</div><div class="line">                              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;/TouchableOpacity&gt;</div><div class="line">        )</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> propTypes = &#123;</div><div class="line">        title: PropTypes.string,</div><div class="line">        onPress: PropTypes.func</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>暴露出组件的属性(title)和方法(onPress)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;TouchableOpacity style=&#123;styles.touchStyle&#125;</div><div class="line">                              onPress=&#123;()=&gt;&#123;</div><div class="line">                                <span class="keyword">if</span> (<span class="keyword">this</span>.props.onPress) &#123;</div><div class="line">                                    <span class="keyword">this</span>.props.onPress(<span class="keyword">this</span>)</div><div class="line">                                &#125;</div><div class="line">                              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text style=&#123;styles.textStyle&#125;&gt;&#123;this.props.title&#125;&lt;/Text&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableOpacity&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>处理TouchableOpacity的点击事件,设置回调函数</li>
+<li>显示Button的title</li>
+</ul>
+<p>组件调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;Button  title=&quot;登录&quot;</div><div class="line">        onPress=&#123;() =&gt; alert(&apos;点击了登录按钮&apos;)&#125;/&gt;</div></pre></td></tr></table></figure>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><img src="https://i.loli.net/2018/03/02/5a98efa4c7dc0.gif" alt="RNCustomComponent.gif"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/06/记一次React-Native-StackNavigator使用小结/" itemprop="url">
+                  记一次React Native的StackNavigator使用小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-06T16:10:49+08:00" content="2017-07-06">
+              2017-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> (</div><div class="line">  routeConfigMap: NavigationRouteConfigMap,</div><div class="line">  stackConfig: StackNavigatorConfig = &#123;&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>在<code>StackNavigator</code>的初始化中需要传入两个参数：<code>routeConfigMap</code> 表示路由配置参数, <code>stackConfig</code>表示配置<code>StackNavigatorConfig</code>一些样式或者属性。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> MainSrceenStackNavigator = StackNavigator(</div><div class="line">    &#123;</div><div class="line">        MainScreenNavigator: &#123;screen: MainScreenNavigator&#125;,</div><div class="line">        DiscoverDetail: &#123;screen: DiscoverDetail&#125;,</div><div class="line">        SettingDetail: &#123;screen: SettingDetail&#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        initialRouteName: <span class="string">'MainScreenNavigator'</span>,</div><div class="line">        mode:<span class="string">'card'</span>,</div><div class="line">        headerMode:<span class="string">'screen'</span>,</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>上述代码块配置了3个不同路由的界面，<code>initialRouteName</code>设置根导航控制器界面,默认第一个为根路由。<code>mode</code>表示界面的跳转方式:push或者模态弹出。<code>headerMode</code>表示界面在做跳转时的区域。有三种方式:<code>float</code>,<code>screen</code>,<code>none</code>。<code>float</code>表示不包括导航条在内;<code>screen</code>表示整个屏幕(包括导航条);<code>none</code>表示导航条的隐藏。还有很多属性可选配置。用到可在官网查询<a href="https://reactnavigation.org/docs/navigators/stack" target="_blank" rel="external">React Navigation
+</a>。</p>
+<h1 id="🌰"><a href="#🌰" class="headerlink" title="🌰"></a>🌰</h1><p>在<code>我的</code>界面配置导航条样式</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> navigationOptions = (&#123;navigation&#125;)=&gt;(&#123;</div><div class="line">        <span class="comment">// tabBarLabel: '我的',</span></div><div class="line">        title: <span class="string">'我'</span>,</div><div class="line">        headerStyle:&#123;</div><div class="line">            backgroundColor: <span class="string">'black'</span></div><div class="line">        &#125;,</div><div class="line">        headerTitleStyle:&#123;</div><div class="line">            color: <span class="string">'white'</span> </div><div class="line">        &#125;,</div><div class="line">        tabBarIcon:(&#123;tintColor,focused&#125;) =&gt; (</div><div class="line">            &lt;TabBarItem  </div><div class="line">              tintColor=&#123;tintColor&#125;  </div><div class="line">              focused=&#123;focused&#125;  </div><div class="line">              normalImage=&#123;<span class="built_in">require</span>(<span class="string">'./source/我的@2x.png'</span>)&#125;  </div><div class="line">              selectedImage=&#123;<span class="built_in">require</span>(<span class="string">'./source/我的-选中@2x.png'</span>)&#125;  </div><div class="line">            /&gt;  </div><div class="line">        ),</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>然后再显示出ListView(三个分区的ListView)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constructor</span>(props) &#123;</div><div class="line">        <span class="keyword">super</span>(props);</div><div class="line"></div><div class="line">        <span class="keyword">var</span> ds = <span class="keyword">new</span> ListView.DataSource(&#123;rowHasChanged: (r1, r2) =&gt; r1 !== r2,sectionHeaderHasChanged:(s1,s2)=&gt;s1 !== s2&#125;);</div><div class="line">        <span class="keyword">this</span>.state = &#123;</div><div class="line">            dataSource: ds.cloneWithRowsAndSections([[<span class="string">'钱包'</span>],[<span class="string">'收藏'</span>,<span class="string">'相册'</span>,<span class="string">'卡包'</span>,<span class="string">'表情'</span>],[<span class="string">'设置'</span>]]),</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">render()&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">                &lt;ListView </div><div class="line">                dataSource=&#123;this.state.dataSource&#125;</div><div class="line">                renderRow=&#123;this._renderRow.bind(this)&#125;</div><div class="line">                renderSeparator=&#123;this._renderSeparator&#125;&gt;</div><div class="line">                &lt;/ListView&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        )</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>分割线</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_renderSeparator(sectionID, rowID, adjacentRowHighlighted)  &#123;</div><div class="line">        <span class="keyword">if</span>(sectionID == <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style=&#123;styles.separatorStyle&#125;&gt;&lt;/View&gt;</div><div class="line">        )</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>ListView每个分区每一行的数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">_renderRow(rowData, sectionID, rowID, highlightRow)&#123;</div><div class="line">       <span class="keyword">if</span> (sectionID == <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">return</span>(</div><div class="line">               &lt;TouchableOpacity onPress=&#123;() =&gt;&#123;</div><div class="line">                   highlightRow(sectionID,rowID),</div><div class="line">                   this.props.navigation.navigate('SettingDetail',&#123;'name': rowData&#125;)</div><div class="line">               &#125;&#125;&gt;</div><div class="line">                   &lt;View style=&#123;styles.section_0_style&#125;&gt;</div><div class="line">                       &lt;Text style=&#123;&#123;fontSize:15&#125;&#125;&gt;&#123;rowData&#125;&lt;/Text&gt;</div><div class="line">                   &lt;/View&gt;</div><div class="line">               &lt;/TouchableOpacity&gt;</div><div class="line">           )</div><div class="line">       &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sectionID == <span class="number">1</span>)&#123;</div><div class="line">           <span class="keyword">return</span>(</div><div class="line">           &lt;TouchableOpacity onPress=&#123;() =&gt;&#123;</div><div class="line">                   highlightRow(sectionID,rowID),</div><div class="line">                   this.props.navigation.navigate('SettingDetail',&#123;'name': rowData&#125;)</div><div class="line">               &#125;&#125;&gt;   </div><div class="line">           &lt;View style=&#123;styles.viewStyle&#125;&gt;</div><div class="line">               &lt;Text style=&#123;&#123;fontSize:15&#125;&#125;&gt;&#123;rowData&#125;&lt;/Text&gt;</div><div class="line">           &lt;/View&gt;</div><div class="line">           &lt;/TouchableOpacity&gt;</div><div class="line">           )</div><div class="line">       &#125;<span class="keyword">else</span>&#123;</div><div class="line">           <span class="keyword">return</span>(</div><div class="line">               &lt;TouchableOpacity onPress=&#123;() =&gt;&#123;</div><div class="line">                   highlightRow(sectionID,rowID),</div><div class="line">                   this.props.navigation.navigate('SettingDetail',&#123;'name': rowData&#125;)</div><div class="line">               &#125;&#125;&gt;</div><div class="line">               &lt;View style=&#123;styles.section_0_style&#125;&gt;</div><div class="line">                    &lt;Text style=&#123;&#123;fontSize:15&#125;&#125;&gt;&#123;rowData&#125;&lt;/Text&gt;</div><div class="line">               &lt;/View&gt;</div><div class="line">               &lt;/TouchableOpacity&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><code>this.props.navigation.navigate(&#39;SettingDetail&#39;,{&#39;name&#39;: rowData})</code> navigation可用属性来获取。 该函数传递参数<code>{rowData}</code>即ListView每行数据到<code>SettingDetail</code>界面。</p>
+<p>再<code>SettingDetail</code>界面中可用下面方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> navigationOptions = (&#123;navigation&#125;) =&gt; (&#123;</div><div class="line">       title:<span class="string">`<span class="subst">$&#123;navigation.state.params.name&#125;</span>`</span>,</div><div class="line">       headerBackTitle: <span class="string">'返回'</span>,</div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
+<p>来获取传递过来的参数显示到导航条的title。</p>
+<p><img src="https://i.loli.net/2018/03/02/5a98f066c0e5b.gif" alt="RN.gif"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/13/iOS界面优化系列之：处理图片缩放问题/" itemprop="url">
+                  iOS界面优化系列之：处理图片缩放问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-13T14:56:05+08:00" content="2017-02-13">
+              2017-02-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在众多阅读类的APP中，比如:</p>
+<figure class="half"><br>    <img src="http://upload-images.jianshu.io/upload_images/1421047-cefaed703108a4aa.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568"><br>    <img src="http://upload-images.jianshu.io/upload_images/1421047-8b81cc02257ab29f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568"><br></figure>
+
+<p>这类比较稍微简单的界面中充斥着大量的的图片，多则6张,少则3-4张。再者像微博这类重型社交的APP，有的cell都已经有9张图片。图片的优化程度对整个界面的流畅度来说都是重中之重。（另外一个也很重要的地方就是文本的异步渲染），后几个系列也会说到。</p>
+<p>像这种异步加载图片的开源库有很多：<code>SD_WebImageView</code>  <code>YYWebImage  Kingfisher</code>  <code>PINRemoteImage</code> …<br>开发者如果只是简单的调用一下 <code>sd_setImageWithURL:</code> 图片能够很好的显示出来。假如从网络加载的图片与自己设置的UIImageView的尺寸不一致,就会导致这种结果。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8aeb9245ca7573ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-131912.png"><br>如果是真机调试 打开<code>Instruments</code>中<code>Core Animation</code><br><img src="https://i.loli.net/2018/03/02/5a98f166a8d51.png" alt="Jietu20170112-135233.png"><br>在右侧栏中打开<br><img src="http://upload-images.jianshu.io/upload_images/1421047-7ce789d8152d0bff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-135327.png"><br>如果是模拟器，打开Debug -&gt;Color Misaligned Images</p>
+<p>这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。**黄色、紫色越多，性能越差。</p>
+<p>解决办法：<br>1.与后台协商，让后台返回的图片尺寸与客户端UIImageView尺寸一致;<br>2.自己处理。</p>
+<p>下面介绍下如何自己处理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIImage</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">resizeImage</span><span class="params">(<span class="number">_</span> image: UIImage, targetSize: CGSize)</span></span> -&gt; <span class="type">UIImage</span>? &#123;</div><div class="line">            <span class="keyword">let</span> newRect = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: targetSize.width, height: targetSize.height).integral</div><div class="line">            <span class="type">UIGraphicsBeginImageContextWithOptions</span>(targetSize, <span class="literal">false</span>, <span class="number">0</span>)</div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> context = <span class="type">UIGraphicsGetCurrentContext</span>() &#123;</div><div class="line">                context.interpolationQuality = .high</div><div class="line">                <span class="keyword">let</span> flipVertical = <span class="type">CGAffineTransform</span>(a: <span class="number">1</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: <span class="number">0</span>, d: -<span class="number">1</span>, tx: <span class="number">0</span>, ty: targetSize.height)</div><div class="line">                context.concatenate(flipVertical)</div><div class="line">                context.draw(<span class="keyword">self</span>.cgImage!, <span class="keyword">in</span>: newRect)</div><div class="line">                <span class="keyword">let</span> newImage = <span class="type">UIImage</span>(cgImage: context.makeImage()!)</div><div class="line">                <span class="type">UIGraphicsEndImageContext</span>()</div><div class="line">               <span class="keyword">return</span> newImage</div><div class="line">            &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很简单就是网络下载下来的图片按照自己设置的UIImageView的尺寸来重新draw一个。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setImage</span>&lt;T: UIImageView&gt;<span class="params">(<span class="number">_</span> imageView: T, URLString: String, targetSize: CGSize)</span></span>&#123;</div><div class="line">        imageView.pin_setImage(from: <span class="type">URL</span>.<span class="keyword">init</span>(string: <span class="type">URLString</span>), completion: &#123;(<span class="type">PINRemoteImageManagerResult</span>) <span class="keyword">in</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> image = <span class="type">PINRemoteImageManagerResult</span>.image&#123;</div><div class="line">                    imageView.image = image.resizeImage(image, targetSize: targetSize)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>重新给UIImageView设置image属性</p>
+<p>重新打开Color Misaligned Images功能来检测一下<br><img src="http://upload-images.jianshu.io/upload_images/1421047-95561fdba06255d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="Jietu20170112-140353.png"></p>
+<p>嗯！ 不错哦，之前的黄色没有了。 本以为就达到了的要求。</p>
+<p>但是用<code>Instruments</code>中<code>Time Profiler</code><br><img src="https://i.loli.net/2018/03/02/5a98f197b4aaa.png" alt="Jietu20170112-140732.png"><br>来检测下处理该函数所需要的时间</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-758e84ae67a3697e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-141255.png"></p>
+<p>用Core Animation来测下FPS</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-7663f55e36043484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-142314.png"></p>
+<p>虽然已经很流畅了（注：文本用到了异步绘制）,  基本在54左右， 但是距离满帧59 - 60还差那么一丢丢。</p>
+<p>再来观察给UIImage扩展的这个方法 发现它是在主线程中执行，当快速滑动表格时，会有大量的图片在主线程中重新绘制。这个是造成缺失那几帧的主要原因。</p>
+<p>解决办法：那就在子线程总去draw, 在主线程中去显示</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIImageView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">drawImage</span><span class="params">(<span class="number">_</span> image: UIImage, targetSize: CGSize)</span></span> &#123;</div><div class="line">        <span class="type">DispatchQueue</span>.global().async &#123;</div><div class="line">            <span class="keyword">let</span> newRect = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: targetSize.width, height: targetSize.height).integral</div><div class="line">            <span class="type">UIGraphicsBeginImageContextWithOptions</span>(targetSize, <span class="literal">false</span>, <span class="number">0</span>)</div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> context = <span class="type">UIGraphicsGetCurrentContext</span>() &#123;</div><div class="line">                context.interpolationQuality = .high</div><div class="line">                <span class="keyword">let</span> flipVertical = <span class="type">CGAffineTransform</span>(a: <span class="number">1</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: <span class="number">0</span>, d: -<span class="number">1</span>, tx: <span class="number">0</span>, ty: targetSize.height)</div><div class="line">                context.concatenate(flipVertical)</div><div class="line">                context.saveGState()</div><div class="line">                context.draw(image.cgImage!, <span class="keyword">in</span>: newRect)</div><div class="line">                context.restoreGState()</div><div class="line">                <span class="keyword">let</span> newImage = <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()</div><div class="line">                <span class="type">UIGraphicsEndImageContext</span>()</div><div class="line">                <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">                    <span class="keyword">if</span> <span class="keyword">let</span> newImage = newImage&#123;</div><div class="line">                        <span class="keyword">self</span>.layer.contents = newImage.cgImage</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Objective-C</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)drawImage:(<span class="built_in">UIImage</span> *)image targetSize:(<span class="built_in">CGSize</span> )size&#123;</div><div class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_global_queue(QOS_CLASS_DEFAULT, <span class="number">0</span>), ^&#123;</div><div class="line">        <span class="built_in">CGRect</span> newRect = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, size.width, size.height);</div><div class="line">        <span class="built_in">CGRectIntegral</span>(newRect);</div><div class="line">        <span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(size, <span class="literal">NO</span>, [<span class="built_in">UIScreen</span> mainScreen].scale);</div><div class="line">        <span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();</div><div class="line">        <span class="built_in">CGContextSetInterpolationQuality</span>(context, kCGInterpolationHigh);</div><div class="line">        <span class="built_in">CGAffineTransform</span> transform = <span class="built_in">CGAffineTransformMake</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, size.height);</div><div class="line">        <span class="built_in">CGContextConcatCTM</span>(context, transform);</div><div class="line">        <span class="built_in">CGContextSaveGState</span>(context);</div><div class="line">        <span class="built_in">CGContextDrawImage</span>(context, newRect, image.CGImage);</div><div class="line">        <span class="built_in">CGContextRestoreGState</span>(context);</div><div class="line">        <span class="built_in">UIImage</span> *newImage = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">        <span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">        <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">            <span class="keyword">if</span> (newImage) &#123;</div><div class="line">                <span class="keyword">self</span>.layer.contents = (<span class="keyword">id</span>)(newImage.CGImage);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法也很简单,在子线程中去重新draw一个UIImage,在主线程中去显示。</p>
+<p>调用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setImage</span>&lt;T: UIImageView&gt;<span class="params">(<span class="number">_</span> imageView: T, URLString: String, targetSize: CGSize)</span></span>&#123;</div><div class="line">        imageView.pin_setImage(from: <span class="type">URL</span>.<span class="keyword">init</span>(string: <span class="type">URLString</span>), completion: &#123;(<span class="type">PINRemoteImageManagerResult</span>) <span class="keyword">in</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> image = <span class="type">PINRemoteImageManagerResult</span>.image&#123;</div><div class="line">                imageView.drawImage(image, targetSize: targetSize)</div><div class="line"><span class="comment">//                    imageView.image = image.resizeImage(image, targetSize: targetSize)</span></div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>重新测下帧数以及Time Profile</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-2c7369df156405e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-143643.png"><br>当快速滑动的时候基本上能够达到慢帧的状态</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-833bed416800300a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jietu20170112-143924.png"><br>所用的时间也是非常少的。在16ms以内。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/08/dispatch-semaphore-t-信号量/" itemprop="url">
+                  dispatch_semaphore_t 信号量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T16:20:14+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="dispatch-semaphore-create"><a href="#dispatch-semaphore-create" class="headerlink" title="dispatch_semaphore_create"></a><code>dispatch_semaphore_create</code></h1><p><code>dispatch_semaphore_create(long value)</code> 传入的是一个数字,该数字必须大于等于0。列如传入10，表示创建一个信号总量为10信号量（就好比一共有10个停车位）。假如传入0</p>
+<p>The starting value for the semaphore. Passing a value less than zero will cause NULL to be returned.</p>
+<p>则返回为NULL</p>
+<h1 id="dispatch-semaphore-wait"><a href="#dispatch-semaphore-wait" class="headerlink" title="dispatch_semaphore_wait"></a><code>dispatch_semaphore_wait</code></h1><p>该函数会使传入的信号量减1,当信号量有 &gt;= 1时,就会继续往下执行。如果没有,该线程就会一直处于等待状态，可阻塞当前线程。该函数需要传入另一个参数 </p>
+<p><code>#define DISPATCH_TIME_NOW  表示从现在开始 #define DISPATCH_TIME_FOREVER  表示永不超时</code></p>
+<h1 id="dispatch-semaphore-single"><a href="#dispatch-semaphore-single" class="headerlink" title="dispatch_semaphore_single"></a><code>dispatch_semaphore_single</code></h1><p>该函数会使传入的信号量加1,与<code>dispatch_ semaphore _ wait</code>成对出现。</p>
+<p>拿YYKit源码来举例：在#import “UIButton+YYWebImage.m”中</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">instancetype</span>)init &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="comment">//声明一个信号总量为1信号量</span></div><div class="line">    _lock = dispatch_semaphore_create(<span class="number">1</span>);</div><div class="line">    _dic = [<span class="built_in">NSMutableDictionary</span> new];</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (_YYWebImageSetter *)setterForState:(<span class="built_in">NSNumber</span> *)state &#123;</div><div class="line"></div><div class="line"><span class="comment">//是当前线程处于阻塞状态,直到有 &gt;= 1 信号量才会继续执行下面的取值操作</span></div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    <span class="comment">//如果不加入线程锁，就很有可能发生多个线程同时访问_dic字典,造成资源竞争。</span></div><div class="line">    _YYWebImageSetter *<span class="keyword">setter</span> = _dic[state];</div><div class="line">    <span class="comment">//使该信号量加1。保持信号量的平衡，如果没有保持信号量的平衡,可能会出现莫名的bug,甚至crash。</span></div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">setter</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (_YYWebImageSetter *)lazySetterForState:(<span class="built_in">NSNumber</span> *)state &#123;</div><div class="line"></div><div class="line">    <span class="comment">//同理</span></div><div class="line">    dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYWebImageSetter *<span class="keyword">setter</span> = _dic[state];</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">setter</span>) &#123;</div><div class="line">        <span class="keyword">setter</span> = [_YYWebImageSetter new];</div><div class="line">        _dic[state] = <span class="keyword">setter</span>;</div><div class="line">    &#125;</div><div class="line">    dispatch_semaphore_signal(_lock);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">setter</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在读取_YYWebImageSetter该函数中使用<code>dispatch_semaphore_wait</code>和<code>dispatch_semaphore_signal</code>使当前函数为线程安全。实际上信号量就是锁，它与 <code>@synchronized</code> 函数看起来很像。所起到的作用就是至始至终只会有一个线程去访问该函数。</p>
+<p>在 <a href="http://www.cnblogs.com/snailHL/p/3906112.html" target="_blank" rel="external">这边文章中</a>很形象的比喻了信号量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">关于信号量，一般可以用停车来比喻。</div><div class="line"></div><div class="line">　　停车场剩余4个车位，那么即使同时来了四辆车也能停的下。如果此时来了五辆车，那么就有一辆需要等待。</div><div class="line"></div><div class="line">　　信号量的值就相当于剩余车位的数目，dispatch_semaphore_wait函数就相当于来了一辆车，dispatch_semaphore_signal</div><div class="line"></div><div class="line">　　就相当于走了一辆车。停车位的剩余数目在初始化的时候就已经指明了（dispatch_semaphore_create（long value）），</div><div class="line"></div><div class="line">　　调用一次dispatch_semaphore_signal，剩余的车位就增加一个；调用一次dispatch_semaphore_wait剩余车位就减少一个；</div><div class="line"></div><div class="line">　　当剩余车位为0时，再来车（即调用dispatch_semaphore_wait）就只能等待。有可能同时有几辆车等待一个停车位。有些车主</div><div class="line"></div><div class="line">　　没有耐心，给自己设定了一段等待时间，这段时间内等不到停车位就走了，如果等到了就开进去停车。而有些车主就像把车停在这，</div><div class="line"></div><div class="line">　　所以就一直等下去。</div></pre></td></tr></table></figure>
+<p>举个🌰   NSMutableArray不是线程安全的,我们可以稍作修饰,线程安全的去更新数组</p>
+<p>　<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSMutableArray</span> *array = [<span class="built_in">NSMutableArray</span> array];</div><div class="line"> dispatch_semaphore_t semphore = dispatch_semaphore_create(<span class="number">1</span>);</div><div class="line"> <span class="built_in">dispatch_queue_t</span> concurrentQueue = dispatch_queue_create(<span class="string">"com.lx.gcddemo"</span>,DISPATCH_QUEUE_CONCURRENT);</div><div class="line">      dispatch_apply(<span class="number">100</span>, concurrentQueue, ^(size_t i) &#123;</div><div class="line">          dispatch_semaphore_wait(semphore, DISPATCH_TIME_FOREVER);</div><div class="line">          <span class="comment">/*</span></div><div class="line">          @synchronized (array) &#123;</div><div class="line">              [array addObject:[NSNumber numberWithUnsignedInteger:i]];</div><div class="line">          &#125;</div><div class="line">           */</div><div class="line">          [array addObject:[<span class="built_in">NSNumber</span> numberWithUnsignedInteger:i]];</div><div class="line">          dispatch_semaphore_signal(semphore);</div><div class="line">      &#125;);</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,array);</div></pre></td></tr></table></figure></p>
+<p>　　
+　　</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/14/cocoapods升级1.1.0/" itemprop="url">
+                  cocoapods 更新到最新版本(1.1.0)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-14T20:45:52+08:00" content="2016-10-14">
+              2016-10-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Apple 发布swift3.0之后 一大部分著名的第三方开源库,比如Alamofire,snapKit 之后都陆续更新到swift3.0。当我们用cocoapods管理它们或者使用它们的时候都会看到这样一句话:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CocoaPods 1.1.0+ is required to build Alamofire 4.0.0+.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CocoaPods 1.1.0+ is required to build SnapKit 3.0.0+.</div></pre></td></tr></table></figure>
+<p>需要将cocoapods更新到1.1.0版本以上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install cocoapods --pre //升级到最新版本</div></pre></td></tr></table></figure>
+<p>但是会遇到权限问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ERROR:  While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/pod</div></pre></td></tr></table></figure>
+<p>需要这么一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods --pre -n /usr/local/bin cocoa pods</div></pre></td></tr></table></figure>
+<p>在10.11以上的系统中Apple已经启用无根的安装 stack overflow这么解释:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">This is happening because Apple has enabled rootless on the new install</div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/30812777/cannot-install-cocoa-pods-after-uninstalling-results-in-error/" target="_blank" rel="external">参考链接</a></p>
+<p>查看cocoapods当前版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod --version</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1.1.0.beta.2</div></pre></td></tr></table></figure>
+<p>此时cocoapods版本就会更新到最新版本.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/10/iOS开发小技巧(一)/" itemprop="url">
+                  iOS开发小技巧(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-10T20:44:20+08:00" content="2016-10-10">
+              2016-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="改变UIImagePickerController的导航条以及title的颜色"><a href="#改变UIImagePickerController的导航条以及title的颜色" class="headerlink" title="改变UIImagePickerController的导航条以及title的颜色"></a>改变UIImagePickerController的导航条以及title的颜色</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)navigationController:(<span class="built_in">UINavigationController</span> *)navigationController willShowViewController:(<span class="built_in">UIViewController</span> *)viewController animated:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">   [<span class="built_in">UIApplication</span> sharedApplication].statusBarStyle = <span class="built_in">UIStatusBarStyleLightContent</span>;</div><div class="line">    <span class="built_in">UINavigationBar</span> *bar = [<span class="built_in">UINavigationBar</span> appearance];</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *titleDictionary = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    titleDictionary[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">    [bar setTitleTextAttributes:titleDictionary];</div><div class="line">    viewController.navigationController.navigationBar.barTintColor = DIF_BASE_COLOR;</div><div class="line">    viewController.navigationController.navigationBar.tintColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="利用KVC改变TextField的占位符的颜色"><a href="#利用KVC改变TextField的占位符的颜色" class="headerlink" title="利用KVC改变TextField的占位符的颜色"></a>利用KVC改变TextField的占位符的颜色</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.nickNameTextField setValue:[<span class="built_in">UIColor</span> whiteColor] forKeyPath:<span class="string">@"_placeholderLabel.textColor"</span>];</div></pre></td></tr></table></figure>
+<h1 id="TextView的字数限制"><a href="#TextView的字数限制" class="headerlink" title="TextView的字数限制"></a>TextView的字数限制</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#define MaxNumberOfDescriptionChars  150</span></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)textViewEditChanged:(<span class="built_in">NSNotification</span> *)obj&#123;</div><div class="line">    <span class="built_in">UITextView</span> *textView = (<span class="built_in">UITextView</span> *)obj.object;</div><div class="line">    <span class="built_in">NSString</span> *toBeString = textView.text;</div><div class="line">    <span class="built_in">NSString</span> *lang = [[<span class="built_in">UITextInputMode</span> currentInputMode] primaryLanguage]; <span class="comment">// 键盘输入模式</span></div><div class="line">    <span class="keyword">if</span> ([lang isEqualToString:<span class="string">@"zh-Hans"</span>]) &#123; <span class="comment">// 简体中文输入，包括简体拼音，健体五笔，简体手写</span></div><div class="line">        <span class="built_in">UITextRange</span> *selectedRange = [textView markedTextRange];</div><div class="line">        <span class="comment">//获取高亮部分</span></div><div class="line">        <span class="built_in">UITextPosition</span> *position = [textView positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">        <span class="comment">// 没有高亮选择的字，则对已输入的文字进行字数统计和限制</span></div><div class="line">        <span class="keyword">if</span> (!position) &#123;</div><div class="line">            <span class="keyword">if</span> (toBeString.length &gt; MaxNumberOfDescriptionChars) &#123;</div><div class="line">                textView.text = [toBeString substringToIndex:MaxNumberOfDescriptionChars];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 有高亮选择的字符串，则暂不对文字进行统计和限制</span></div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况</span></div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">if</span> (toBeString.length &gt; MaxNumberOfDescriptionChars) &#123;</div><div class="line">            </div><div class="line">            textView.text = [toBeString substringToIndex:MaxNumberOfDescriptionChars];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)textView:(<span class="built_in">UITextView</span> *)textView shouldChangeTextInRange:(<span class="built_in">NSRange</span>)range replacementText:(<span class="built_in">NSString</span> *)text&#123;</div><div class="line">    <span class="built_in">NSString</span> *new = [textView.text stringByReplacingCharactersInRange:range withString:text];</div><div class="line">    <span class="keyword">self</span>.numLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%zd字"</span>,(MaxNumberOfDescriptionChars - new.length)];</div><div class="line">    <span class="keyword">if</span>(new.length &gt; MaxNumberOfDescriptionChars)&#123;</div><div class="line">         <span class="keyword">self</span>.numLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%zd字"</span>,<span class="number">0</span>];</div><div class="line">        <span class="keyword">if</span> (![text isEqualToString:<span class="string">@""</span>]) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="判断字符串或者集合类型是否为空"><a href="#判断字符串或者集合类型是否为空" class="headerlink" title="判断字符串或者集合类型是否为空"></a>判断字符串或者集合类型是否为空</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">BOOL</span>)isEmpty:(<span class="keyword">id</span> )obj</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([obj isKindOfClass:[<span class="built_in">NSString</span> <span class="keyword">class</span>]]) &#123;</div><div class="line">        <span class="keyword">if</span>(obj == <span class="literal">nil</span> || [obj <span class="keyword">class</span>] == [<span class="built_in">NSNull</span> null] || [obj isEqualToString:<span class="string">@""</span>] || [obj isEqualToString:<span class="string">@"(null)"</span>] || [obj isEqualToString:<span class="string">@"NULL"</span>] || [obj isEqualToString:<span class="string">@"&lt;null&gt;"</span>] || [obj isEqualToString:<span class="string">@"null"</span>])</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (obj == <span class="literal">nil</span> || (<span class="built_in">NSNull</span> *)obj == [<span class="built_in">NSNull</span> null] || ([obj respondsToSelector:<span class="keyword">@selector</span>(length)] &amp;&amp; [obj length] == <span class="number">0</span>) || ([obj respondsToSelector:<span class="keyword">@selector</span>(count)] &amp;&amp; [obj count] == <span class="number">0</span>))&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="给UIResponder添加indexPath属性"><a href="#给UIResponder添加indexPath属性" class="headerlink" title="给UIResponder添加indexPath属性"></a>给UIResponder添加indexPath属性</h1><h2 id="列如在cell中有button-imageview-可以利用该属性找到cell中改该视图"><a href="#列如在cell中有button-imageview-可以利用该属性找到cell中改该视图" class="headerlink" title="列如在cell中有button imageview 可以利用该属性找到cell中改该视图"></a>列如在cell中有button imageview 可以利用该属性找到cell中改该视图</h2><h3 id="objective-C"><a href="#objective-C" class="headerlink" title="objective - C"></a>objective - C</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UIResponder</span> (<span class="title">Externtion</span>)</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSIndexPath</span> *indexPath;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, <span class="keyword">@selector</span>(indexPath), indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> objc_getAssociatedObject(<span class="keyword">self</span>, <span class="keyword">@selector</span>(indexPath));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="swift"><a href="#swift" class="headerlink" title="swift"></a>swift</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIResponder</span></span>&#123;</div><div class="line">    </div><div class="line">   <span class="keyword">private</span> <span class="class"><span class="keyword">struct</span> <span class="title">AssociatedKey</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">AssociatedName</span> = <span class="string">"AssociatedName"</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> indexPath: <span class="type">NSIndexPath</span>?&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">           <span class="keyword">return</span> objc_getAssociatedObject(<span class="keyword">self</span>, &amp;<span class="type">AssociatedKey</span>.<span class="type">AssociatedName</span>) <span class="keyword">as</span>? <span class="type">NSIndexPath</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> newValue = newValue &#123;</div><div class="line">                objc_setAssociatedObject(<span class="keyword">self</span>, &amp;<span class="type">AssociatedKey</span>.<span class="type">AssociatedName</span>, newValue <span class="keyword">as</span> <span class="type">NSIndexPath</span> , .<span class="type">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="UIRefreshControl"><a href="#UIRefreshControl" class="headerlink" title="UIRefreshControl"></a>UIRefreshControl</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> refresh = <span class="type">UIRefreshControl</span>.<span class="keyword">init</span>()</div><div class="line">        refresh.tintColor = <span class="type">UIColor</span>.red</div><div class="line">        refresh.attributedTitle = <span class="type">NSAttributedString</span>.<span class="keyword">init</span>(string: <span class="string">"正在加载"</span>)</div><div class="line">        refresh.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">ViewController</span>.refreshTabeleView(sender:)), <span class="keyword">for</span>: <span class="type">UIControlEvents</span>.valueChanged)</div><div class="line">        </div><div class="line">        </div><div class="line">        tableView.refreshControl = refresh</div><div class="line">        tableView.addSubview(refresh)</div><div class="line">        tableView.reloadData()</div></pre></td></tr></table></figure>
+<h1 id="将HTML字符串转化为NSAttributedString富文本字符串"><a href="#将HTML字符串转化为NSAttributedString富文本字符串" class="headerlink" title="将HTML字符串转化为NSAttributedString富文本字符串"></a>将HTML字符串转化为NSAttributedString富文本字符串</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSAttributedString</span> *)attributedStringWithHTMLString:(<span class="built_in">NSString</span> *)htmlString</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSDictionary</span> *options = @&#123; <span class="built_in">NSDocumentTypeDocumentAttribute</span> : <span class="built_in">NSHTMLTextDocumentType</span>,</div><div class="line">                               <span class="built_in">NSCharacterEncodingDocumentAttribute</span> :@(<span class="built_in">NSUTF8StringEncoding</span>) &#125;;</div><div class="line">   </div><div class="line">    <span class="built_in">NSData</span> *data = [htmlString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</div><div class="line">   </div><div class="line">    <span class="keyword">return</span> [[<span class="built_in">NSAttributedString</span> alloc] initWithData:data options:options documentAttributes:<span class="literal">nil</span> error:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="CABasicAnimation（CAKeyframeAnimation）key-path-取值"><a href="#CABasicAnimation（CAKeyframeAnimation）key-path-取值" class="headerlink" title="CABasicAnimation（CAKeyframeAnimation）key path 取值"></a>CABasicAnimation（CAKeyframeAnimation）key path 取值</h1><h2 id="keyPath可以使用的key"><a href="#keyPath可以使用的key" class="headerlink" title="keyPath可以使用的key"></a>keyPath可以使用的key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">- define angle2Radian(angle) ((angle)/180.0*M_PI)</div><div class="line"></div><div class="line">transform.rotation.x 围绕x轴翻转 参数：角度 angle2Radian(4)</div><div class="line"></div><div class="line">transform.rotation.y 围绕y轴翻转 参数：同上</div><div class="line"></div><div class="line">transform.rotation.z 围绕z轴翻转 参数：同上</div><div class="line"></div><div class="line">transform.rotation 默认围绕z轴</div><div class="line"></div><div class="line">transform.scale.x x方向缩放 参数：缩放比例 1.5</div><div class="line"></div><div class="line">transform.scale.y y方向缩放 参数：同上</div><div class="line"></div><div class="line">transform.scale.z z方向缩放 参数：同上</div><div class="line"></div><div class="line">transform.scale 所有方向缩放 参数：同上</div><div class="line"></div><div class="line">transform.translation.x x方向移动 参数：x轴上的坐标 100</div><div class="line"></div><div class="line">transform.translation.y x方向移动 参数：y轴上的坐标</div><div class="line"></div><div class="line">transform.translation.z x方向移动 参数：z轴上的坐标</div><div class="line"></div><div class="line">transform.translation 移动 参数：移动到的点 （100，100）</div><div class="line"></div><div class="line">opacity 透明度 参数：透明度 0.5</div><div class="line"></div><div class="line">backgroundColor 背景颜色 参数：颜色 (id)[[UIColor redColor] CGColor]</div><div class="line"></div><div class="line">cornerRadius 圆角 参数：圆角半径 5</div><div class="line"></div><div class="line">borderWidth 边框宽度 参数：边框宽度 5</div><div class="line"></div><div class="line">bounds 大小 参数：CGRect</div><div class="line"></div><div class="line">contents 内容 参数：CGImage</div><div class="line"></div><div class="line">contentsRect 可视内容 参数：CGRect 值是0～1之间的小数</div><div class="line"></div><div class="line">hidden 是否隐藏</div><div class="line"></div><div class="line">position</div><div class="line"></div><div class="line">shadowColor</div><div class="line"></div><div class="line">shadowOffset</div><div class="line"></div><div class="line">shadowOpacity</div><div class="line"></div><div class="line">shadowRadius</div></pre></td></tr></table></figure>
+<h1 id="隐藏导航条和tabBar的直线"><a href="#隐藏导航条和tabBar的直线" class="headerlink" title="隐藏导航条和tabBar的直线"></a>隐藏导航条和tabBar的直线</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UINavigationBar</span> *bar = [<span class="built_in">UINavigationBar</span> appearance];</div><div class="line">bar.shadowImage = [<span class="built_in">UIImage</span> new];</div><div class="line">[bar setBackgroundImage:[<span class="built_in">UIImage</span> new] forBarMetrics:<span class="built_in">UIBarMetricsDefault</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UITabBar</span> *tabBar = [<span class="built_in">UITabBar</span> appearance];</div><div class="line">tabBar.shadowImage = [<span class="built_in">UIImage</span> new];</div><div class="line">tabBar.backgroundImage = [<span class="built_in">UIImage</span> new];</div></pre></td></tr></table></figure>
+<h1 id="全屏手势返回"><a href="#全屏手势返回" class="headerlink" title="全屏手势返回"></a>全屏手势返回</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIPanGestureRecognizer</span> *pan = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span>.interactivePopGestureRecognizer.delegate action:<span class="keyword">@selector</span>(handleNavigationTransition:)];</div><div class="line">pan.delegate = <span class="keyword">self</span>;</div><div class="line">[<span class="keyword">self</span>.view addGestureRecognizer:pan];</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.childViewControllers.count &gt; <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="UITextView的placeholder"><a href="#UITextView的placeholder" class="headerlink" title="UITextView的placeholder"></a>UITextView的placeholder</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textViewDidBeginEditing:(<span class="built_in">UITextView</span> *)textView &#123;</div><div class="line">    [<span class="keyword">self</span> resetTextViewPlaceholderWithText:textView];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)textViewDidEndEditing:(<span class="built_in">UITextView</span> *)textView &#123;</div><div class="line">    [<span class="keyword">self</span> resetTextViewPlaceholderWithText:textView];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)resetTextViewPlaceholderWithText:(<span class="built_in">UITextView</span> *)textView</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> ([textView.text isEqualToString:<span class="string">@"要显示的placeholder"</span>]) &#123;</div><div class="line">        textView.text = <span class="string">@""</span>;</div><div class="line">        textView.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (textView.text.length &lt; <span class="number">1</span>) &#123;</div><div class="line">        textView.text = <span class="string">@"要显示的placeholder"</span>;</div><div class="line">        textView.textColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.87</span> green:<span class="number">0.87</span> blue:<span class="number">0.87</span> alpha:<span class="number">1.00</span>];</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="让应用支持摇一摇"><a href="#让应用支持摇一摇" class="headerlink" title="让应用支持摇一摇"></a>让应用支持摇一摇</h1><ul>
+<li>开启摇一摇权限</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIApplication</span> sharedApplication].applicationSupportsShakeToEdit = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>让view/viewcontroller成为第一响应者</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - UIResponder</span></div><div class="line">- (<span class="built_in">BOOL</span>)canBecomeFirstResponder &#123;</div><div class="line">	<span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>实现方发</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 摇动</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动开始</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionBegan:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="keyword">if</span> (motion == <span class="built_in">UIEventSubtypeMotionShake</span>) &#123;</div><div class="line">    <span class="comment">// do some thing</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动结束</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionEnded:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  摇动取消</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)motionCancelled:(<span class="built_in">UIEventSubtype</span>)motion withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="HeaderView随tableview一起滑动"><a href="#HeaderView随tableview一起滑动" class="headerlink" title="HeaderView随tableview一起滑动"></a>HeaderView随tableview一起滑动</h1><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (scrollView == <span class="keyword">self</span>.tableView) &#123;</div><div class="line">        </div><div class="line">        <span class="built_in">CGFloat</span> headerHeight = DIF_SCREEN_HEIGHT / <span class="number">3</span>;</div><div class="line">        <span class="keyword">if</span> (scrollView.contentOffset.y &lt;= headerHeight &amp;&amp; scrollView.contentOffset.y &gt;= <span class="number">0</span>) &#123;</div><div class="line">            scrollView.contentInset = <span class="built_in">UIEdgeInsetsMake</span>(-scrollView.contentOffset.y, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (scrollView.contentOffset.y &gt;= headerHeight)&#123;</div><div class="line">            scrollView.contentInset = <span class="built_in">UIEdgeInsetsMake</span>(-headerHeight, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/09/load VS initialize/" itemprop="url">
+                  load VS initialize
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T20:35:30+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h1><p>方法只会被调用一次(相对于runtime而言)</p>
+<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><h2 id="load方法"><a href="#load方法" class="headerlink" title="load方法"></a>load方法</h2><p>声明一个SuperClass类继承与NSObject </p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SuperClass</span></span></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">  <span class="built_in">NSLog</span>(<span class="string">@"加载load方法"</span>); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"main"</span>);</div><div class="line">       <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="literal">nil</span>, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>控制台打印输出 <code>load 
+main</code></p>
+<p>得出结论:load方法在程序启动前就会调用。在main函数之前调用。</p>
+<h2 id="initialize方法"><a href="#initialize方法" class="headerlink" title="initialize方法"></a>initialize方法</h2><p>执行以下代码</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>控制台打印输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SuperClass +[SuperClass initialize]</div><div class="line">SuperClass +[SuperClass load]</div></pre></td></tr></table></figure>
+<p>为什么initialize方法会再load方法前调用呢？通过Apple的文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The runtime sends initialize to each class in a program exactly one time just before the class, or any class that inherits from it, is sent its first message from within the program. (Thus the method may never be invoked if the class is not used.) The runtime sends the initialize message to classes in a thread-safe manner. Superclasses receive this message before their subclasses.</div></pre></td></tr></table></figure>
+<p>得知: initialize方法在类的第一个方法被调用前调用。即先执行load方法中的[self class] 就会调用initialize方法。</p>
+<h2 id="子类会调用父类的initialize"><a href="#子类会调用父类的initialize" class="headerlink" title="子类会调用父类的initialize"></a>子类会调用父类的initialize</h2><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ChildClass</span> : <span class="title">SuperClass</span></span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SuperClass</span></span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ChildClass</span></span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)load</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>还是导入头文件而不去使用它控制台打印输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SuperClass +[SuperClass initialize]</div><div class="line">ChildClass +[ChildClass initialize]</div><div class="line">ChildClass +[ChildClass load]</div></pre></td></tr></table></figure>
+<h2 id="类别-Category-中的-void-load的-void-initialize"><a href="#类别-Category-中的-void-load的-void-initialize" class="headerlink" title="类别(Category)中的+(void)load的+(void)initialize"></a>类别(Category)中的+(void)load的+(void)initialize</h2><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/******* Interface *******/</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MainClass</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="comment">/******* Category Implementation *******/</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MainClass</span>(<span class="title">Category</span>)</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MainClass</span>(<span class="title">OtherCategory</span>)</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="comment">/******* Implementation *******/</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MainClass</span></span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) initialize &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %s"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], __FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>import 之后 </p>
+<p>MainClass +[MainClass(OtherCategory) initialize]<br>MainClass +[MainClass load]<br>MainClass +[MainClass(Category) load]<br>MainClass +[MainClass(OtherCategory) load]</p>
+<p>先执行类自身的实现，再执行类别(Category)中的实现</p>
+<h2 id="不需要调用-super-load-和-super-initialize"><a href="#不需要调用-super-load-和-super-initialize" class="headerlink" title="不需要调用[super load] 和 [super initialize]"></a>不需要调用[super load] 和 [super initialize]</h2><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="comment">//do initialization thing</span></div><div class="line">    [<span class="keyword">super</span> initialize];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) load &#123;</div><div class="line">    <span class="comment">//do some loading things</span></div><div class="line">    [<span class="keyword">super</span> load];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样写是多余的</p>
+<h1 id="开发过程中需要注意"><a href="#开发过程中需要注意" class="headerlink" title="开发过程中需要注意"></a>开发过程中需要注意</h1><p>在Objective-C中，运行时会自动调用每个类的两个方法。+load会在类初始加载时调用，+initialize会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。由于method swizzling会影响到类的全局状态，因此要尽量避免在并发处理中出现竞争的情况。+load能保证在类的初始化过程中被加载，并保证这种改变应用级别的行为的一致性。相比之下，+initialize在其执行时不提供这种保证–事实上，如果在应用中没为给这个类发送消息，则它可能永远不会被调用</p>
+<p>参考链接:<br><a href="http://www.cnblogs.com/ider/archive/2012/09/29/objective_c_load_vs_initialize.html" target="_blank" rel="external">Objective C类方法load和initialize的区别</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/24/3D - Touch之Peek & Pop/" itemprop="url">
+                  3D - Touch（二）之Peek & Pop
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T10:21:50+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍了前面的桌面的3D-Touch,这篇文章来介绍应用中使用peek &amp; pop。 比如QQ 微信中消息界面重压cell就会出现peek &amp; pop。接下来实现这一效果。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="创建视图-sourceView"><a href="#创建视图-sourceView" class="headerlink" title="创建视图(sourceView)"></a>创建视图(sourceView)</h2><p>首先用tableview来做例子。用storyboard创建表,在这里就不赘述了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> titleArray = [<span class="string">"3D-Touch Objective-C"</span>,<span class="string">"3D-Touch Swift"</span>,<span class="string">"前言快报:Swift终将超越OC,进而取代OC"</span>,<span class="string">"Github9月编程语言 JS 跃居第一位"</span>]</div></pre></td></tr></table></figure>
+<p>创建一个数组来做tableview的数据源。</p>
+<h2 id="实现代理"><a href="#实现代理" class="headerlink" title="实现代理"></a>实现代理</h2><p>在实现这一效果之前,需要使当前的控制器实现<code>UIViewControllerPreviewingDelegate</code>代理并且要判断当前设备是否支持Peek &amp; pop:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> traitCollection.forceTouchCapability == .available&#123;</div><div class="line">            registerForPreviewing(with: <span class="keyword">self</span>, sourceView: tableView)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>代理中有两个方法:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">previewingContext</span><span class="params">(<span class="number">_</span> previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint)</span></span> -&gt; <span class="type">UIViewController</span>?</div></pre></td></tr></table></figure>
+<p>第一个参数可以获取到要显示的是哪个目标view（sourceView）以及手势,其中有个属性（sourceRect）还可以控制那块区域展示出peek的效果</p>
+<p>第二个参数location 顾名思义就是要控制能产生重压的区域。(与第一个参数的sourceRect不同,sourceRect只是哪片区域要展示peek效果,就是在屏幕中视图凸起的那一部分。如果不设置默认就是整个sourceView,而这个参数则是控制哪些区域能使用peek效果)。注意 “能” 和 “要”。<br>这个方法返回的是要显示的那个控制器,就是pop预览的那个控制器。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">previewingContext</span><span class="params">(<span class="number">_</span> previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)</span></span></div></pre></td></tr></table></figure>
+<p>这个方法就是用来做跳转的。</p>
+<h2 id="开始实现代理方法"><a href="#开始实现代理方法" class="headerlink" title="开始实现代理方法"></a>开始实现代理方法</h2><p>我们需要新建一个控制器来做pop效果,返回出这个控制器。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">previewingContext</span><span class="params">(<span class="number">_</span> previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint)</span></span> -&gt; <span class="type">UIViewController</span>? &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> indexPath = tableView.indexPathForRow(at:location) , <span class="keyword">let</span> cell = tableView.cellForRow(at: indexPath) <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> detailVC  = <span class="type">UIStoryboard</span>.<span class="keyword">init</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>).instantiateViewController(withIdentifier: <span class="string">"detail"</span>) <span class="keyword">as</span>! <span class="type">DetailViewController</span></div><div class="line">    previewingContext.sourceRect = cell.frame</div><div class="line">    detailVC.text = (cell.textLabel?.text)!</div><div class="line">    <span class="keyword">return</span> detailVC</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">previewingContext</span><span class="params">(<span class="number">_</span> previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)</span></span> &#123;</div><div class="line"><span class="comment">//        self.show(viewControllerToCommit, sender: self)</span></div><div class="line">        <span class="keyword">self</span>.navigationController?.pushViewController(viewControllerToCommit, animated: <span class="literal">true</span>)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>show 和 push都能展示出相同的效果</p>
+<h2 id="在显示的控制器中设置代码"><a href="#在显示的控制器中设置代码" class="headerlink" title="在显示的控制器中设置代码"></a>在显示的控制器中设置代码</h2><p>在detailviewcontroller中需要返回出pop向上拉的选项。（也可以不实现）另外要为了要展示出数据,我在该视图控制器中添加了一个textview来展示数据。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.title = <span class="string">"详情"</span></div><div class="line"><span class="keyword">self</span>.automaticallyAdjustsScrollViewInsets = <span class="literal">false</span></div><div class="line"><span class="keyword">self</span>.textView.text = text</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="keyword">var</span> previewActionItems: [<span class="type">UIPreviewActionItem</span>]&#123;</div><div class="line">       </div><div class="line">       <span class="keyword">let</span> action1 = <span class="type">UIPreviewAction</span>.<span class="keyword">init</span>(title: <span class="string">"喜欢"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="type">UIPreviewAction</span>, <span class="type">UIViewController</span>) <span class="keyword">in</span> </div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="keyword">let</span> action2 = <span class="type">UIPreviewAction</span>.<span class="keyword">init</span>(title: <span class="string">"收藏"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="type">UIPreviewAction</span>, <span class="type">UIViewController</span>) <span class="keyword">in</span></div><div class="line">           </div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="keyword">let</span> cancle = <span class="type">UIPreviewAction</span>.<span class="keyword">init</span>(title: <span class="string">"取消"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="type">UIPreviewAction</span>, <span class="type">UIViewController</span>) <span class="keyword">in</span></div><div class="line">           </div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="keyword">let</span> delete = <span class="type">UIPreviewAction</span>.<span class="keyword">init</span>(title: <span class="string">"删除"</span>, style: .destructive) &#123; (<span class="type">UIPreviewAction</span>, <span class="type">UIViewController</span>) <span class="keyword">in</span></div><div class="line">           </div><div class="line">       &#125;</div><div class="line">   </div><div class="line">       <span class="keyword">let</span> actionGroup = <span class="type">UIPreviewActionGroup</span>.<span class="keyword">init</span>(title: <span class="string">"删除"</span>, style: .destructive, actions: [cancle,delete])</div><div class="line">       </div><div class="line">       <span class="keyword">return</span> [action1, action2 ,actionGroup]</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>返回的数组中存的是UIPreviewAction。这个数组可以是个二维数组,所以可以展示出很多选项。例子中返回的就是一个二维数组。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到此整个效果的代码都设置完了。接下来运行程序,看看我们的成果吧:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-f73b14b53899dc5b.gif?imageMogr2/auto-orient/strip" alt="3D- Touch.gif"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/23/3D-Touch 桌面/" itemprop="url">
+                  3D - Touch(一) 桌面
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T20:07:51+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="桌面3D-Touch"><a href="#桌面3D-Touch" class="headerlink" title="桌面3D - Touch"></a>桌面3D - Touch</h1><h2 id="快捷静态操作（Quick-actions）"><a href="#快捷静态操作（Quick-actions）" class="headerlink" title="快捷静态操作（Quick actions）"></a>快捷静态操作（Quick actions）</h2><p>需要在 <code>info.plist</code>中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;key&gt;UIApplicationShortcutItems&lt;/key&gt;</div><div class="line">&lt;array&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;弹一弹&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;摇一摇&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;扫一扫&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">&lt;/array&gt;</div></pre></td></tr></table></figure>
+<p>关于几个必须要填写的项：</p>
+<ol>
+<li>UIApplicationShortcutItemTitle:  表示要显示的标题。展示在你的quick action菜单中的action标题。如果标题一行无法显示并且你没有指定子标题那么它将显示两行。可以使用本地化(localised)。</li>
+<li>UIApplicationShortcutItemType:  作为UIApplicationShortcutItem的一部分发送给你的应用。可以依据不同的shortcut类型用于执行你的actions。命名规则为： com.公司名.app名.图标作用名</li>
+</ol>
+<p>关于选填的项：</p>
+<ol>
+<li>UIApplicationShortcutItemIconType:  定义内置图标类型的字符串，可选类型列表可以查询<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationShortcutIcon_Class/index.html#//apple_ref/c/tdef/UIApplicationShortcutIconType" target="_blank" rel="external">这里</a></li>
+<li>UIApplicationShortcutItemSubtitle:  用户展示你的actions的子标题的字符串。它将显示在你的quick actions标题的下方。可以本地化。</li>
+<li>UIApplicationShortcutItemIconFile：一个指定Assets Catalog或者Bundle中的字符串。如果指定了此键，则系统会忽略UIApplicationShortcutItemIconType</li>
+<li>UIApplicationShortcutItemUserInfo：一个字典，包含你想要解析的其他信息。</li>
+</ol>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>在入口类文件（appDelegate）中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//检测版本</span></div><div class="line">        <span class="keyword">if</span> <span class="type">UIDevice</span>.current.systemVersion &gt;= <span class="string">"9.0"</span> &#123;</div><div class="line">            <span class="keyword">let</span> shortcutItem = launchOptions?[<span class="type">UIApplicationLaunchOptionsKey</span>.shortcutItem] <span class="keyword">as</span>? <span class="type">UIApplicationShortcutItem</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> shortcutItem = shortcutItem&#123;</div><div class="line">                <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>还要实现另一个方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//MARK: - 3D-Touch</span></div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping <span class="params">(Bool)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">     <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</div><div class="line">     completionHandler(<span class="literal">true</span>)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>由于代码的冗余 需要定义一个私有的方法 可以根据<br><code>localizedTitle</code> 或者 <code>type</code> 来区别点击的是哪个。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span>  <span class="function"><span class="keyword">func</span> <span class="title">quickActionWithShortcutItem</span><span class="params">(shortcutItem: UIApplicationShortcutItem)</span></span>&#123;</div><div class="line">      <span class="keyword">let</span> nav = <span class="keyword">self</span>.window?.rootViewController <span class="keyword">as</span>? <span class="type">UINavigationController</span></div><div class="line">      <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"弹一弹"</span>&#123;</div><div class="line">          </div><div class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"摇一摇"</span>&#123;</div><div class="line">          </div><div class="line">          <span class="keyword">let</span> detailVC = <span class="type">UIStoryboard</span>.<span class="keyword">init</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>).instantiateViewController(withIdentifier: <span class="string">"detail"</span>) <span class="keyword">as</span>! <span class="type">DetailViewController</span></div><div class="line">          nav!.pushViewController(detailVC, animated: <span class="literal">true</span>)</div><div class="line">          </div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">          </div><div class="line">          nav!.pushViewController(<span class="type">ThirdViewController</span>(), animated: <span class="literal">true</span>)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>到这里完全设置好了桌面图标的3D - Touch。 由于最近系统升级到了iOS10 桌面icon的3D - Touch 新增了widget。接下来就来时适配iOS10。</p>
+<h1 id="Extention"><a href="#Extention" class="headerlink" title="Extention"></a>Extention</h1><p>(更多信息移步到<a href="https://onevcat.com/2014/08/notification-today-widget/" target="_blank" rel="external">这里</a>)(喵神博客)</p>
+<p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-2c7a1a352ceedf42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-0@2x.png"></p>
+<p>工程中会多出这些文件</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8d30c066607b9592.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-1@2x.png"></p>
+<p>在MainInterface.storyboard中我们可以定制UI。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-4ac148040ca13437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-3@2x.png"></p>
+<p>当我们想纯代码构建UI时,在上图显示的Info.plist中NSExtension需要将NSExtensionMainStoryboard删掉,解除与storyboard的关联</p>
+<p>例子中用的storyboard构建UI。 当我们需要与APP通信时。需要用到 URL Shchemes。</p>
+<h2 id="首先给label添加手势"><a href="#首先给label添加手势" class="headerlink" title="首先给label添加手势"></a>首先给label添加手势</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">widgetLabel.addGestureRecognizer(<span class="type">UITapGestureRecognizer</span>.<span class="keyword">init</span>(target: <span class="keyword">self</span></div><div class="line">            , action: #selector(<span class="type">TodayViewController</span>.widgetLabelAction)))</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@objc private  func widgetLabelAction() -&gt; Void &#123;</div><div class="line">       extensionContext?.open(NSURL(string: &quot;simple://finished&quot;) as! URL, completionHandler: nil)</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="设置URL-Schemes"><a href="#设置URL-Schemes" class="headerlink" title="设置URL Schemes"></a>设置URL Schemes</h2><p><img src="http://upload-images.jianshu.io/upload_images/1421047-a28aeabf864d2fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-4@2x.png"></p>
+<p>运行程序</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-108a96a4f30cd1bf.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="IMG_0609.PNG"></p>
+<p>我们也可以在widget中添加自己的APP显示信息了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-    
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
-        <span class="sidebar-tag-name" data-tags="React Native"><span class="iconfont-archer">&#xe606;</span>React Native</span>
-    
-        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
-    
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Sunshine" />
+          <p class="site-author-name" itemprop="name">Sunshine</p>
+          <p class="site-description motion-element" itemprop="description">做一个有文艺气息的程序猿</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLixun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
     </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br/>
-    1、请确保node版本大于6.2<br/>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sunshine</span>
 </div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-        <span class="sidebar-category-name" data-categories="Swift"><span class="iconfont-archer">&#xe60a;</span>Swift</span>
-    
-        <span class="sidebar-category-name" data-categories="React-Native"><span class="iconfont-archer">&#xe60a;</span>React-Native</span>
-    
-        <span class="sidebar-category-name" data-categories="其他"><span class="iconfont-archer">&#xe60a;</span>其他</span>
-    
-        <span class="sidebar-category-name" data-categories="Objective-C"><span class="iconfont-archer">&#xe60a;</span>Objective-C</span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: '/',
-        author: 'Sunshine'
-    }
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
-    <!-- busuanzi  -->
-    
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
-    </div>
-    <!-- async load share.js -->
-    
-    </body>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
-
-
