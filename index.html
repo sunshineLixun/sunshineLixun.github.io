@@ -258,6 +258,130 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/20/算法小集-持续更新/" itemprop="url">
+                  算法小集(持续更新)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-20T10:24:13+08:00" content="2018-03-20">
+              2018-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>OC</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *bucketSort(<span class="built_in">NSArray</span> *list)&#123;</div><div class="line"></div><div class="line">	<span class="built_in">NSMutableArray</span> *a = @[].mutableCopy;</div><div class="line">	<span class="built_in">NSMutableArray</span> *c = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">	</div><div class="line">	<span class="comment">//初始化数组a中所有元素都为0</span></div><div class="line">	<span class="keyword">for</span> (<span class="built_in">NSInteger</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</div><div class="line">		a[i] = @<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//遍历b中所有元素 当出现数组a中出现b中元素 数组a的这个元素就+1</span></div><div class="line">	<span class="keyword">for</span> (<span class="built_in">NSNumber</span> *num <span class="keyword">in</span> list) &#123;</div><div class="line">		</div><div class="line">		<span class="built_in">NSInteger</span> index = [num integerValue];</div><div class="line">		<span class="comment">//index = 5,2,3,1,8</span></div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (a[index]) &#123;</div><div class="line">			a[index] = @([a[index] integerValue] + <span class="number">1</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			a[index] = @<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//遍历数组a</span></div><div class="line">	</div><div class="line">	<span class="comment">//从大到小</span></div><div class="line"><span class="comment">//	for (NSInteger i = 10; i &lt; a.count; i --) &#123;</span></div><div class="line"><span class="comment">//		//找到数组a中被增加的元素</span></div><div class="line"><span class="comment">//		if ([a[i] integerValue] &gt; 0) &#123;</span></div><div class="line"><span class="comment">//			[c addObject:@(i)];</span></div><div class="line"><span class="comment">//		&#125;</span></div><div class="line"><span class="comment">//	&#125;</span></div><div class="line">	</div><div class="line">	<span class="comment">//从小到大</span></div><div class="line">	<span class="keyword">for</span> (<span class="built_in">NSInteger</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="keyword">if</span> ([a[i] integerValue] &gt; <span class="number">0</span>) &#123;</div><div class="line">			[c addObject:@(i)];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (c.count &gt; <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">return</span> c;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bucketSort</span>(<span class="params">list</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(list)) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> arrayA = []</div><div class="line">  <span class="keyword">let</span> arrayC = []</div><div class="line"></div><div class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; <span class="number">10</span>; index++) &#123;</div><div class="line">   arrayA[index] = <span class="number">0</span></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> list.forEach(element =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (element == <span class="literal">undefined</span> || element == <span class="literal">null</span>) <span class="keyword">return</span></div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (arrayA[element] != <span class="literal">undefined</span> || arrayA[element] != <span class="literal">null</span>) &#123;</div><div class="line">    arrayA[element] += <span class="number">1</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    arrayA[element] = <span class="number">0</span></div><div class="line">  &#125;</div><div class="line"> &#125;)</div><div class="line"></div><div class="line"> <span class="keyword">return</span> arrayA.map((item, index) =&gt; &#123;</div><div class="line">   <span class="keyword">if</span> (item &gt; <span class="number">0</span>) <span class="keyword">return</span> index</div><div class="line"> &#125;)</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *quicksort(<span class="built_in">NSMutableArray</span> *array, <span class="built_in">NSInteger</span> left, <span class="built_in">NSInteger</span> right)&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (left &gt; right) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//temp 基准数</span></div><div class="line">	<span class="built_in">NSInteger</span> temp = [array[left] integerValue];</div><div class="line">	<span class="built_in">NSInteger</span> t = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">while</span> (left != right) &#123;</div><div class="line">		<span class="comment">//从右向左找</span></div><div class="line">		<span class="keyword">while</span> ([array[right] integerValue] &gt; temp &amp;&amp; left &lt; right) &#123;</div><div class="line">			right --;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="comment">//从左向右找</span></div><div class="line">		<span class="keyword">while</span> ([array[left] integerValue] &lt; temp &amp;&amp; left &lt; right) &#123;</div><div class="line">			left ++;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="comment">//未相遇</span></div><div class="line">		<span class="keyword">if</span> (left &lt; right) &#123;</div><div class="line">			<span class="comment">//交换位置</span></div><div class="line">			t = [array[left] integerValue];</div><div class="line">			array[left] = array[right];</div><div class="line">			array[right] = @(t);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//left == right 确定基准数位置</span></div><div class="line">	array[left] = @(temp);</div><div class="line">	</div><div class="line">	<span class="comment">//递归</span></div><div class="line">	<span class="comment">//处理基准数左边数据</span></div><div class="line">	quicksort(array, left, left - <span class="number">1</span>);</div><div class="line">	<span class="comment">//处理基准数右边数据</span></div><div class="line">	quicksort(array, left + <span class="number">1</span>, right);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(array)) &#123;</div><div class="line">    <span class="keyword">return</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (array.length &lt; <span class="number">2</span>) &#123;</div><div class="line">    <span class="keyword">return</span> array</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">let</span> less = []</div><div class="line">    <span class="keyword">let</span> greater = []</div><div class="line">    <span class="keyword">var</span> pivotIndex = <span class="built_in">Math</span>.floor(array.length / <span class="number">2</span>);</div><div class="line">　　 <span class="keyword">var</span> pivot = array.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; array.length; i ++)&#123;</div><div class="line">      <span class="keyword">if</span> (array[i] &lt; pivot) &#123;</div><div class="line">        less.push(array[i])</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        greater.push(array[i])</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> quickSort(less).concat([pivot], quickSort(greater))</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>OC</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *bubblesort(<span class="built_in">NSMutableArray</span> *list)&#123;</div><div class="line">	<span class="built_in">NSNumber</span> *t;</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">NSInteger</span> i = <span class="number">0</span>; i &lt; list.count - <span class="number">1</span>; i++) &#123; <span class="comment">//n个数排序,只用进行n-1趟</span></div><div class="line">		<span class="keyword">for</span> (<span class="built_in">NSInteger</span> j = <span class="number">0</span>; j &lt; list.count - <span class="number">1</span>; j++) &#123; <span class="comment">//从第1位开始比较直到最后一位尚未归为的数 因为只进行n-1趟排序,所以最后一位则是n-1。</span></div><div class="line">			<span class="keyword">if</span> (list[j] &gt; list[j + <span class="number">1</span>]) &#123;</div><div class="line">				t = list[j];</div><div class="line">				list[j] = list[j+ <span class="number">1</span>];</div><div class="line">				list[j + <span class="number">1</span>] = t;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">array</span>) </span>&#123;</div><div class="line"> <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(array)) <span class="keyword">return</span></div><div class="line"></div><div class="line"> <span class="keyword">let</span> T = <span class="number">0</span>;</div><div class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; array.length - <span class="number">1</span>; index++) &#123;</div><div class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; array.length <span class="number">-1</span>; j++) &#123;</div><div class="line">     <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</div><div class="line">       T = array[j]</div><div class="line">       array[j] = array[j + <span class="number">1</span>]</div><div class="line">       array[j + <span class="number">1</span>] = T</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> array</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>JS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binary_search</span>(<span class="params">list, item</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> low = <span class="number">0</span></div><div class="line">  <span class="keyword">let</span> high = list.length - <span class="number">1</span></div><div class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</div><div class="line">    <span class="keyword">const</span> mid = low + high </div><div class="line">    <span class="keyword">const</span> guess = list[mid]</div><div class="line">    <span class="keyword">if</span> (guess == item) &#123;</div><div class="line">        <span class="keyword">return</span> mid</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">if</span> (guess &gt; item) &#123;</div><div class="line">        high = mid - <span class="number">1</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        low = mid + <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/01/AutoLayout-父视图根据子视图自适应/" itemprop="url">
                   AutoLayout - 父视图根据子视图布局自适应大小
                 </a>
@@ -1457,154 +1581,6 @@ main</code></p>
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/3D-Touch 桌面/" itemprop="url">
-                  3D - Touch(一) 桌面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T20:07:51+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="桌面3D-Touch"><a href="#桌面3D-Touch" class="headerlink" title="桌面3D - Touch"></a>桌面3D - Touch</h1><h2 id="快捷静态操作（Quick-actions）"><a href="#快捷静态操作（Quick-actions）" class="headerlink" title="快捷静态操作（Quick actions）"></a>快捷静态操作（Quick actions）</h2><p>需要在 <code>info.plist</code>中配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;key&gt;UIApplicationShortcutItems&lt;/key&gt;</div><div class="line">&lt;array&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;弹一弹&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;摇一摇&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">	&lt;dict&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</div><div class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</div><div class="line">		&lt;string&gt;扫一扫&lt;/string&gt;</div><div class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</div><div class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</div><div class="line">	&lt;/dict&gt;</div><div class="line">&lt;/array&gt;</div></pre></td></tr></table></figure>
-<p>关于几个必须要填写的项：</p>
-<ol>
-<li>UIApplicationShortcutItemTitle:  表示要显示的标题。展示在你的quick action菜单中的action标题。如果标题一行无法显示并且你没有指定子标题那么它将显示两行。可以使用本地化(localised)。</li>
-<li>UIApplicationShortcutItemType:  作为UIApplicationShortcutItem的一部分发送给你的应用。可以依据不同的shortcut类型用于执行你的actions。命名规则为： com.公司名.app名.图标作用名</li>
-</ol>
-<p>关于选填的项：</p>
-<ol>
-<li>UIApplicationShortcutItemIconType:  定义内置图标类型的字符串，可选类型列表可以查询<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationShortcutIcon_Class/index.html#//apple_ref/c/tdef/UIApplicationShortcutIconType" target="_blank" rel="external">这里</a></li>
-<li>UIApplicationShortcutItemSubtitle:  用户展示你的actions的子标题的字符串。它将显示在你的quick actions标题的下方。可以本地化。</li>
-<li>UIApplicationShortcutItemIconFile：一个指定Assets Catalog或者Bundle中的字符串。如果指定了此键，则系统会忽略UIApplicationShortcutItemIconType</li>
-<li>UIApplicationShortcutItemUserInfo：一个字典，包含你想要解析的其他信息。</li>
-</ol>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>在入口类文件（appDelegate）中</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//检测版本</span></div><div class="line">        <span class="keyword">if</span> <span class="type">UIDevice</span>.current.systemVersion &gt;= <span class="string">"9.0"</span> &#123;</div><div class="line">            <span class="keyword">let</span> shortcutItem = launchOptions?[<span class="type">UIApplicationLaunchOptionsKey</span>.shortcutItem] <span class="keyword">as</span>? <span class="type">UIApplicationShortcutItem</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> shortcutItem = shortcutItem&#123;</div><div class="line">                <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>还要实现另一个方法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//MARK: - 3D-Touch</span></div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping <span class="params">(Bool)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">     <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</div><div class="line">     completionHandler(<span class="literal">true</span>)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>由于代码的冗余 需要定义一个私有的方法 可以根据<br><code>localizedTitle</code> 或者 <code>type</code> 来区别点击的是哪个。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span>  <span class="function"><span class="keyword">func</span> <span class="title">quickActionWithShortcutItem</span><span class="params">(shortcutItem: UIApplicationShortcutItem)</span></span>&#123;</div><div class="line">      <span class="keyword">let</span> nav = <span class="keyword">self</span>.window?.rootViewController <span class="keyword">as</span>? <span class="type">UINavigationController</span></div><div class="line">      <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"弹一弹"</span>&#123;</div><div class="line">          </div><div class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"摇一摇"</span>&#123;</div><div class="line">          </div><div class="line">          <span class="keyword">let</span> detailVC = <span class="type">UIStoryboard</span>.<span class="keyword">init</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>).instantiateViewController(withIdentifier: <span class="string">"detail"</span>) <span class="keyword">as</span>! <span class="type">DetailViewController</span></div><div class="line">          nav!.pushViewController(detailVC, animated: <span class="literal">true</span>)</div><div class="line">          </div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">          </div><div class="line">          nav!.pushViewController(<span class="type">ThirdViewController</span>(), animated: <span class="literal">true</span>)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>到这里完全设置好了桌面图标的3D - Touch。 由于最近系统升级到了iOS10 桌面icon的3D - Touch 新增了widget。接下来就来时适配iOS10。</p>
-<h1 id="Extention"><a href="#Extention" class="headerlink" title="Extention"></a>Extention</h1><p>(更多信息移步到<a href="https://onevcat.com/2014/08/notification-today-widget/" target="_blank" rel="external">这里</a>)(喵神博客)</p>
-<p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1421047-2c7a1a352ceedf42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-0@2x.png"></p>
-<p>工程中会多出这些文件</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8d30c066607b9592.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-1@2x.png"></p>
-<p>在MainInterface.storyboard中我们可以定制UI。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1421047-4ac148040ca13437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-3@2x.png"></p>
-<p>当我们想纯代码构建UI时,在上图显示的Info.plist中NSExtension需要将NSExtensionMainStoryboard删掉,解除与storyboard的关联</p>
-<p>例子中用的storyboard构建UI。 当我们需要与APP通信时。需要用到 URL Shchemes。</p>
-<h2 id="首先给label添加手势"><a href="#首先给label添加手势" class="headerlink" title="首先给label添加手势"></a>首先给label添加手势</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">widgetLabel.addGestureRecognizer(<span class="type">UITapGestureRecognizer</span>.<span class="keyword">init</span>(target: <span class="keyword">self</span></div><div class="line">            , action: #selector(<span class="type">TodayViewController</span>.widgetLabelAction)))</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@objc private  func widgetLabelAction() -&gt; Void &#123;</div><div class="line">       extensionContext?.open(NSURL(string: &quot;simple://finished&quot;) as! URL, completionHandler: nil)</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h2 id="设置URL-Schemes"><a href="#设置URL-Schemes" class="headerlink" title="设置URL Schemes"></a>设置URL Schemes</h2><p><img src="http://upload-images.jianshu.io/upload_images/1421047-a28aeabf864d2fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-4@2x.png"></p>
-<p>运行程序</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1421047-108a96a4f30cd1bf.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="IMG_0609.PNG"></p>
-<p>我们也可以在widget中添加自己的APP显示信息了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1650,7 +1626,7 @@ main</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1658,7 +1634,7 @@ main</code></p>
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1667,7 +1643,7 @@ main</code></p>
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
