@@ -1,0 +1,785 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="桌面3D - Touch快捷静态操作（Quick actions）需要在 info.plist中配置 123456789101112131415161718192021222324252627&amp;lt;key&amp;gt;UIApplicationShortcutItems&amp;lt;/key&amp;gt;&amp;lt;array&amp;gt;	&amp;lt;dict&amp;gt;		&amp;lt;key&amp;gt;UIApplicationSho">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D - Touch(一) 桌面">
+<meta property="og:url" content="http://yoursite.com/archives/34e719a3.html">
+<meta property="og:site_name" content="Hello Li">
+<meta property="og:description" content="桌面3D - Touch快捷静态操作（Quick actions）需要在 info.plist中配置 123456789101112131415161718192021222324252627&amp;lt;key&amp;gt;UIApplicationShortcutItems&amp;lt;/key&amp;gt;&amp;lt;array&amp;gt;	&amp;lt;dict&amp;gt;		&amp;lt;key&amp;gt;UIApplicationSho">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-2c7a1a352ceedf42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-8d30c066607b9592.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-4ac148040ca13437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-a28aeabf864d2fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1421047-108a96a4f30cd1bf.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568">
+<meta property="og:updated_time" content="2018-08-30T07:26:35.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3D - Touch(一) 桌面">
+<meta name="twitter:description" content="桌面3D - Touch快捷静态操作（Quick actions）需要在 info.plist中配置 123456789101112131415161718192021222324252627&amp;lt;key&amp;gt;UIApplicationShortcutItems&amp;lt;/key&amp;gt;&amp;lt;array&amp;gt;	&amp;lt;dict&amp;gt;		&amp;lt;key&amp;gt;UIApplicationSho">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1421047-2c7a1a352ceedf42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/archives/34e719a3.html"/>
+
+  <title> 3D - Touch(一) 桌面 | Hello Li </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">lx的个人博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                3D - Touch(一) 桌面
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T20:07:51+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/archives/34e719a3.html" class="leancloud_visitors" data-flag-title="3D - Touch(一) 桌面">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="桌面3D-Touch"><a href="#桌面3D-Touch" class="headerlink" title="桌面3D - Touch"></a>桌面3D - Touch</h1><h2 id="快捷静态操作（Quick-actions）"><a href="#快捷静态操作（Quick-actions）" class="headerlink" title="快捷静态操作（Quick actions）"></a>快捷静态操作（Quick actions）</h2><p>需要在 <code>info.plist</code>中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;UIApplicationShortcutItems&lt;/key&gt;</span><br><span class="line">&lt;array&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;弹一弹&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</span><br><span class="line">	&lt;/dict&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;摇一摇&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</span><br><span class="line">	&lt;/dict&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;UIApplicationShortcutIconTypeShare&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;扫一扫&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;com.yuwubao.search&lt;/string&gt;</span><br><span class="line">	&lt;/dict&gt;</span><br><span class="line">&lt;/array&gt;</span><br></pre></td></tr></table></figure>
+<p>关于几个必须要填写的项：</p>
+<ol>
+<li>UIApplicationShortcutItemTitle:  表示要显示的标题。展示在你的quick action菜单中的action标题。如果标题一行无法显示并且你没有指定子标题那么它将显示两行。可以使用本地化(localised)。</li>
+<li>UIApplicationShortcutItemType:  作为UIApplicationShortcutItem的一部分发送给你的应用。可以依据不同的shortcut类型用于执行你的actions。命名规则为： com.公司名.app名.图标作用名</li>
+</ol>
+<p>关于选填的项：</p>
+<ol>
+<li>UIApplicationShortcutItemIconType:  定义内置图标类型的字符串，可选类型列表可以查询<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationShortcutIcon_Class/index.html#//apple_ref/c/tdef/UIApplicationShortcutIconType" target="_blank" rel="noopener">这里</a></li>
+<li>UIApplicationShortcutItemSubtitle:  用户展示你的actions的子标题的字符串。它将显示在你的quick actions标题的下方。可以本地化。</li>
+<li>UIApplicationShortcutItemIconFile：一个指定Assets Catalog或者Bundle中的字符串。如果指定了此键，则系统会忽略UIApplicationShortcutItemIconType</li>
+<li>UIApplicationShortcutItemUserInfo：一个字典，包含你想要解析的其他信息。</li>
+</ol>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>在入口类文件（appDelegate）中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//检测版本</span></span><br><span class="line">        <span class="keyword">if</span> <span class="type">UIDevice</span>.current.systemVersion &gt;= <span class="string">"9.0"</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> shortcutItem = launchOptions?[<span class="type">UIApplicationLaunchOptionsKey</span>.shortcutItem] <span class="keyword">as</span>? <span class="type">UIApplicationShortcutItem</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> shortcutItem = shortcutItem&#123;</span><br><span class="line">                <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>还要实现另一个方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MARK: - 3D-Touch</span></span><br><span class="line"> <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping <span class="params">(Bool)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">     <span class="keyword">self</span>.quickActionWithShortcutItem(shortcutItem: shortcutItem)</span><br><span class="line">     completionHandler(<span class="literal">true</span>)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>由于代码的冗余 需要定义一个私有的方法 可以根据<br><code>localizedTitle</code> 或者 <code>type</code> 来区别点击的是哪个。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>  <span class="function"><span class="keyword">func</span> <span class="title">quickActionWithShortcutItem</span><span class="params">(shortcutItem: UIApplicationShortcutItem)</span></span>&#123;</span><br><span class="line">      <span class="keyword">let</span> nav = <span class="keyword">self</span>.window?.rootViewController <span class="keyword">as</span>? <span class="type">UINavigationController</span></span><br><span class="line">      <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"弹一弹"</span>&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span> shortcutItem.localizedTitle == <span class="string">"摇一摇"</span>&#123;</span><br><span class="line">          </span><br><span class="line">          <span class="keyword">let</span> detailVC = <span class="type">UIStoryboard</span>.<span class="keyword">init</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>).instantiateViewController(withIdentifier: <span class="string">"detail"</span>) <span class="keyword">as</span>! <span class="type">DetailViewController</span></span><br><span class="line">          nav!.pushViewController(detailVC, animated: <span class="literal">true</span>)</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          </span><br><span class="line">          nav!.pushViewController(<span class="type">ThirdViewController</span>(), animated: <span class="literal">true</span>)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>到这里完全设置好了桌面图标的3D - Touch。 由于最近系统升级到了iOS10 桌面icon的3D - Touch 新增了widget。接下来就来时适配iOS10。</p>
+<h1 id="Extention"><a href="#Extention" class="headerlink" title="Extention"></a>Extention</h1><p>(更多信息移步到<a href="https://onevcat.com/2014/08/notification-today-widget/" target="_blank" rel="noopener">这里</a>)(喵神博客)</p>
+<p>Extensions不是独立的应用程序。Extensions必须依赖于一个host app，叫作宿主APP，同时他们的生命周期相互独立，并且可以互相触发事件。一个宿主APP可以包含多个Extensions。本篇文章主要是 Today Extention。创建方法 <code>File-&gt;New-&gt;Target</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-2c7a1a352ceedf42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-0@2x.png"></p>
+<p>工程中会多出这些文件</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-8d30c066607b9592.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-1@2x.png"></p>
+<p>在MainInterface.storyboard中我们可以定制UI。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-4ac148040ca13437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-3@2x.png"></p>
+<p>当我们想纯代码构建UI时,在上图显示的Info.plist中NSExtension需要将NSExtensionMainStoryboard删掉,解除与storyboard的关联</p>
+<p>例子中用的storyboard构建UI。 当我们需要与APP通信时。需要用到 URL Shchemes。</p>
+<h2 id="首先给label添加手势"><a href="#首先给label添加手势" class="headerlink" title="首先给label添加手势"></a>首先给label添加手势</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">widgetLabel.addGestureRecognizer(<span class="type">UITapGestureRecognizer</span>.<span class="keyword">init</span>(target: <span class="keyword">self</span></span><br><span class="line">            , action: #selector(<span class="type">TodayViewController</span>.widgetLabelAction)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@objc private  func widgetLabelAction() -&gt; Void &#123;</span><br><span class="line">       extensionContext?.open(NSURL(string: &quot;simple://finished&quot;) as! URL, completionHandler: nil)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设置URL-Schemes"><a href="#设置URL-Schemes" class="headerlink" title="设置URL Schemes"></a>设置URL Schemes</h2><p><img src="http://upload-images.jianshu.io/upload_images/1421047-a28aeabf864d2fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160923-4@2x.png"></p>
+<p>运行程序</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1421047-108a96a4f30cd1bf.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/320/h/568" alt="IMG_0609.PNG"></p>
+<p>我们也可以在widget中添加自己的APP显示信息了</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/f134a270.html" rel="next" title="Swift基础">
+                <i class="fa fa-chevron-left"></i> Swift基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/25d33a86.html" rel="prev" title="3D - Touch（二）之Peek And Pop">
+                3D - Touch（二）之Peek And Pop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Hello Li" />
+          <p class="site-author-name" itemprop="name">Hello Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLixun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#桌面3D-Touch"><span class="nav-number">1.</span> <span class="nav-text">桌面3D - Touch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷静态操作（Quick-actions）"><span class="nav-number">1.1.</span> <span class="nav-text">快捷静态操作（Quick actions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步"><span class="nav-number">1.2.</span> <span class="nav-text">第二步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Extention"><span class="nav-number">2.</span> <span class="nav-text">Extention</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先给label添加手势"><span class="nav-number">2.1.</span> <span class="nav-text">首先给label添加手势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置URL-Schemes"><span class="nav-number">2.2.</span> <span class="nav-text">设置URL Schemes</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hello Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2i0jddK6AkBmJ3LyGqEbNhfO-gzGzoHsz", "j7dHuehi8Wf97HyMAU4tQb7a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
