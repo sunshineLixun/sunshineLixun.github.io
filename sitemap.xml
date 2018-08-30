@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/09/01/AutoLayout-%E7%88%B6%E8%A7%86%E5%9B%BE%E6%A0%B9%E6%8D%AE%E5%AD%90%E8%A7%86%E5%9B%BE%E8%87%AA%E9%80%82%E5%BA%94/</loc>
+    
+    <lastmod>2018-08-30T07:26:49.898Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/23/3D-Touch%E6%A1%8C%E9%9D%A2/</loc>
+    
+    <lastmod>2018-08-30T07:26:35.139Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/24/3D%20-%20Touch%E4%B9%8BPeek%20And%20Pop/</loc>
+    
+    <lastmod>2018-08-30T07:26:25.693Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/06/19/React%E6%9B%B4%E6%96%B0props%E4%B8%8EEcharts%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2018-06-19T11:00:58.736Z</lastmod>
@@ -26,13 +47,6 @@
     <loc>http://yoursite.com/2016/10/09/load%20VS%20initialize/</loc>
     
     <lastmod>2018-03-19T09:49:55.771Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/01/AutoLayout-%E7%88%B6%E8%A7%86%E5%9B%BE%E6%A0%B9%E6%8D%AE%E5%AD%90%E8%A7%86%E5%9B%BE%E8%87%AA%E9%80%82%E5%BA%94/</loc>
-    
-    <lastmod>2018-03-19T09:15:26.758Z</lastmod>
     
   </url>
   
@@ -65,23 +79,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/09/23/3D-Touch%20%E6%A1%8C%E9%9D%A2/</loc>
-    
-    <lastmod>2017-09-05T06:46:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/10/10/iOS%E5%BC%80%E5%8F%91%E5%B0%8F%E6%8A%80%E5%B7%A7(%E4%B8%80)/</loc>
     
     <lastmod>2017-08-10T01:52:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/24/3D%20-%20Touch%E4%B9%8BPeek%20&%20Pop/</loc>
-    
-    <lastmod>2017-02-13T07:22:51.000Z</lastmod>
     
   </url>
   
