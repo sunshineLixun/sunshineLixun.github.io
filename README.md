@@ -22,6 +22,8 @@
 
 [AutoLayout - 父视图根据子视图布局自适应大小](https://sunshinelixun.github.io/AutoLayout-%E7%88%B6%E8%A7%86%E5%9B%BE%E6%A0%B9%E6%8D%AE%E5%AD%90%E8%A7%86%E5%9B%BE%E8%87%AA%E9%80%82%E5%BA%94.html)
 
+[适配iOS14桌面小组件](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/11)
+
 # 前端
 
 ## React Native
