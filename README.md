@@ -71,8 +71,9 @@
 
 ## 微信小程序
 
+
 <div>
-<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/IMG_0677.JPG" width="20%" />
+<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/IMG_0677.JPG" width="20%">
 <img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9795337c5171_344.jpg" width="20%" />
 <img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9a6adab57050_344.jpg" width="20%" />  
 <img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9b2cfc47038c_344.jpg" width="20%" />  
