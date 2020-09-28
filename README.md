@@ -61,10 +61,22 @@
 # 个人作品
 
 
+## AppStore
+
 [Days-纪念日](https://apps.apple.com/cn/app/days%E5%A4%87%E5%BF%98%E6%97%A5-%E7%BA%AA%E5%BF%B5%E9%87%8D%E8%A6%81%E7%9A%84%E6%97%A5%E5%AD%90/id1492204944)
 
 [光鸟云盘](https://apps.apple.com/cn/app/%E5%85%89%E9%B8%9F%E4%BA%91%E7%9B%98/id1485501374)
 
+
+
+## 微信小程序
+
+<div>
+<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/IMG_0677.JPG" width="20%" />
+<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9795337c5171_344.jpg" width="20%" />
+<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9a6adab57050_344.jpg" width="20%" />  
+<img src="https://github.com/sunshineLixun/sunshineLixun.github.io/blob/master/img/gh_9b2cfc47038c_344.jpg" width="20%" />  
+</div>
 
 
 
