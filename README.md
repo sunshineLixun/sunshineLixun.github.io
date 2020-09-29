@@ -51,7 +51,7 @@
 
 [【JS基本功系列】执行环境，作用域链(scope chain)](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/10)
 
-[[JS练习题]-实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/12)
+[【JS练习题】实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/12)
 
 
 
