@@ -53,6 +53,7 @@
 
 [【JS练习题】实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/12)
 
+[面试总结](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/13)
 
 
 # 常用基础算法
