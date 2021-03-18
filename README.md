@@ -47,6 +47,9 @@
 
 [监听vuex中state的变化](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/9)
 
+### NPM
+[npm link的使用](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/14)
+
 ## JS
 
 [【JS基本功系列】执行环境，作用域链(scope chain)](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/10)
