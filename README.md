@@ -47,8 +47,11 @@
 
 [监听vuex中state的变化](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/9)
 
-### NPM
+## NPM
 [npm link的使用](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/14)
+
+## rollup
+[rollup打包使用]()
 
 ## JS
 
