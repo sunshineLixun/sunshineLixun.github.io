@@ -61,6 +61,7 @@
 
 [面试总结](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/13)
 
+[设计模式实际应用系列-策略模式](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/17)
 
 # 常用基础算法
 
