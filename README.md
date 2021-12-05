@@ -46,6 +46,7 @@
 ## Vue
 
 [监听vuex中state的变化](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/9)
+[Vue-Router源码分析](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/18)
 
 ## NPM
 [npm link的使用](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/14)
