@@ -49,6 +49,8 @@
 
 [Vue-Router源码分析（一） install过程](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/18)
 
+[Vue-Router源码分析(二): 路由映射表创建](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/19)
+
 ## NPM
 [npm link的使用](https://github.com/sunshineLixun/sunshineLixun.github.io/issues/14)
 
